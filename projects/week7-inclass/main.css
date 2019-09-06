@@ -1,0 +1,250 @@
+/* parallax */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.bgimg-1 {
+  display: flex;
+
+  position: relative;
+  opacity: 1;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25%;
+}
+
+.bgimg-1 {
+  background: #fff;
+  min-height: 100%;
+}
+
+.bgimg-3 {
+  background: white;
+  min-height: 400px;
+}
+
+.caption2 {
+  position: relative;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+h3 {
+  text-align: left;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: white;
+}
+
+
+@media only screen and (max-device-width: 500px) {
+  div .cation2, .group2-screenshot {
+    display: block;
+  }
+  .intro-contents {
+  	width: 100%;
+  }
+}
+
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+  .intro-contents {
+  	width: 55%;
+  }
+}
+
+/* parallax end */
+
+
+
+/* contents */
+/* .chanel-wrapper {
+  position: absolute;
+  left: 38%;
+  top: 30%;
+  width: 100%;
+  color: #000;
+}*/
+
+.chanel-wrapper {
+  display: flex;
+	align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #000;
+  justify-content:
+}
+
+.abs {
+	position: absolute;
+}
+
+.transparent {
+	opacity: 0;
+}
+
+.chanel-logo {
+	z-index: 2;
+	opacity: 0;
+	width: 39vw;
+	animation-fill-mode: forwards;
+	animation: fadeIn ease-in 1;
+	animation-fill-mode: forwards;
+	animation-duration: 1s;
+	animation-delay: 0.85s;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; } 
+	to { opacity: 1; }
+}
+
+.circle {
+	z-index: 0;
+	opacity: 0.5;
+	border-radius: 50%;
+	width: 16vw;
+	height: auto;
+	padding-top: 16vw;
+}
+
+.c1 {
+	margin: -12% 0 0 1%;
+	animation: conePosition 1s ease-in-out;
+}
+
+@keyframes conePosition {
+	0% {
+		margin: -17% 0 0 1%;
+	}
+	100% {
+		margin: -12% 0 0 1%;
+	}
+}
+
+.c2 {
+	margin: -4% 0 0 -4%;
+	animation: ctwoPosition 1s ease-in;
+}
+
+@keyframes ctwoPosition {
+	0% {
+		margin: -4% 0 0 -9%;
+	}
+	100% {
+		margin: -4% 0 0 -4%;
+	}
+}
+
+.c3 {
+	margin: -4% 0 0 5%;
+	animation: cthreePosition 1s ease-in;
+}
+
+@keyframes cthreePosition {
+	0% {
+		margin: -4% 0 0 10%;
+	}
+	100% {
+		margin: -4% 0 0 5%;
+	}
+} 
+
+
+.bg-yellow {
+	background-color: #f8d493;
+}
+
+.bg-purple {
+	background-color: #9a98de;
+}
+
+.bg-pink {
+	background-color: #efcfcd;
+}
+
+
+
+.intro-headline {
+	width: 55%;
+	font-size: 3vw;
+	font-family: century-gothic, sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.intro-contents {
+	font-family: century-gothic, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+
+
+.group2 {
+	color: #777; 
+	background-color: black; 
+	padding: 50px 80px;
+	text-align: justify;
+}
+
+.group2-screenshot {
+	float: right;
+	width: 30vw;
+	z-index: 3;
+	box-shadow: 3vw 3vw 3vw rgba(68, 68, 68, 0.5);
+}
+
+
+.group3 {
+	position: relative;
+	background: URL(assets/chanel-bg.jpg) no-repeat;
+	background-size: background;
+    background-position: 0%;
+	color: #777; 
+	/*background-color: #f5cfcc; */
+	padding: 50px 80px;
+	text-align: left;
+}
+
+.intro-headline {
+	width: 55%;
+	font-size: 4vw;
+	font-family: century-gothic, sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.intro-contents {
+	width: 55%;
+	font-family: century-gothic, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+
+.group3-link {
+	position: relative;
+	float: left;
+	cursor: pointer;
+	background: black;
+	color: white;
+	/*margin: 2vw 0 0 27.5vw;*/
+	padding: 1.5vw 2vw;
+	width: 20%;
+	text-align: left;
+	font-family: century-gothic, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}

@@ -1,0 +1,30 @@
+.pre-big {
+	font-size:16px;
+}
+
+.kpop {
+	color:#ff0000;
+}
+
+.ballad {
+	color:#888888;
+}
+
+.pop {
+	color:#000000;
+	font-weight: bold;
+}
+
+.hiphop {
+	color:#F9D71C;
+	font-style:italic;
+}
+
+.classic {
+	color:#0000ff;
+}
+
+.jazz {
+	color:#D2691E;
+	font-style:italic;
+}

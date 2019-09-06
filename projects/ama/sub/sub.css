@@ -1,0 +1,158 @@
+html, body { 
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+h1 {
+	float: right;
+	text-align: right;
+	font-size: 48px;
+	color: #543E1D;
+	font-family: ff-providence-sans-web-pro, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  width: 500px;
+  margin-left: 5%;
+  line-height: 0.95;
+  font-size: 60px;
+  color: #543E1D;
+  font-family: ff-providence-sans-web-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*side menu*/
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #543E1D; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  font-family: ff-providence-sans-web-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: red;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  width: 100%;
+  height: 100%;
+  transition: margin-left .5s;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/*sidemenu//*/
+
+.hamburger-menu {
+	cursor: pointer;
+	position: absolute;
+  margin: 45px 0 0 20px;
+	width: 30px;
+}
+
+.hamburger-menu-line {
+	background: #543E1D;
+	height: 3px;
+	border-radius: 15%;
+	margin-bottom: 3px;
+}
+
+.table-bg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+	background: URL(../img/table-bg.jpg);
+	width: 100%;
+	height: 50%;
+}
+
+.sub-img {
+  width: 250px;
+  margin: 10% 0 0 5%;
+}
+
+.yellowline {
+  z-index: 2;
+  width: 570px;
+  height: 10px;
+  background-color: #FFBF00;
+  animation: yellowLineWeb 0.5s ease-in-out;
+}
+
+@keyframes yellowLineWeb {
+  0% {width: 0px;}
+  100% {width: 570px;}
+}
+
+.redinfo {
+  z-index: 1;
+  background-color: #BE0001;
+  width: 600px;
+  padding: 100px 60px;
+  margin: -10% 0 0 30%;
+  color: #fff;
+  font-size: 24px;
+  font-family: ff-providence-sans-web-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* for mobile */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .hamburger-menu {
+    cursor: pointer;
+    position: absolute;
+    margin: 30px 0 0 10px;
+    width: 30px;
+  }
+
+  .sub-img {
+    width: 200px;
+  }
+}

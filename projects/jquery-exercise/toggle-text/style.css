@@ -1,0 +1,35 @@
+/* Your styles go here */
+
+body {
+	text-align: center;
+}
+
+.flexdisplay {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.toggle-btn {
+	display: inline-block; /*show div area aligned with the text, not the full width of the window*/
+	font-family: arial;
+	font-size: 2vw;
+	text-align: center;
+	width: 20%;
+	margin: 0 auto;
+	padding: 3vw;
+	border: 2px solid black;
+	cursor: pointer;
+}
+
+.toggle-p {
+	display: none;
+	font-size: 5vw;
+	color: black;
+}
+
+.toggle-p.active {
+	display: block;
+	font-size: 5vw;
+	color: black;
+}

@@ -1,0 +1,70 @@
+/* Your styles go here */
+
+body {
+	width: 100vw;
+}
+
+.box-wrap {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.box {
+	display: flex;
+	width: 35%;
+	height: 5vh;
+	border: 1px solid black;
+	margin-bottom: 2%;
+}
+
+.box-inner {
+	display: flex;
+	width: 35%;
+	height: 5vh;
+	border-right: 2px solid black;
+	margin-bottom: 2%;
+}
+
+.second-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	width: 35%;
+	position: relative;
+	margin: 0 auto;
+	height: 30px;
+}
+
+.ball,
+.dot {
+	position: absolute;
+	top: 10px;
+	left: 0;
+}
+
+.ball {
+	border: 1px solid black;
+	width: 3%;
+	height: auto;
+	border-radius: 50%;
+	padding-top: 3%;
+}
+
+.dot {
+	border: 1px solid black;
+	width: 1%;
+	height: auto;
+	border-radius: 50%;
+	padding-top: 1%;
+}
+
+.hour {
+	background: red
+}
+
+.minute {
+	background: green
+}

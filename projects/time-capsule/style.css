@@ -1,0 +1,61 @@
+body {
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(to right, #efefd2, #010910);
+}
+
+.img-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 25%;
+}
+
+.format-circle {
+	width: 150px;
+	height: 150px;
+	float: left;
+	background-size: 100% 100%;
+}
+
+.c1 {
+	background:URL(assets/imgs/ts-001.jpg) no-repeat;
+}
+
+.c2 {
+	background:URL(assets/imgs/ts-002.jpg) no-repeat;
+}
+
+.c3 {
+	background:URL(assets/imgs/ts-003.jpg) no-repeat;
+}
+
+.c4 {
+	background:URL(assets/imgs/ts-004.jpg) no-repeat;
+}
+
+.c5 {
+	background:URL(assets/imgs/ts-005.jpg) no-repeat;
+}
+
+.c6 {
+	background:URL(assets/imgs/ts-006.jpg) no-repeat;
+}
+
+.c7 {
+	background:URL(assets/imgs/ts-007.jpg) no-repeat;
+}
+
+.c8 {
+	background:URL(assets/imgs/ts-008.jpg) no-repeat;
+}
+
+.c9 {
+	background:URL(assets/imgs/ts-009.jpg) no-repeat;
+}
+
+.c10 {
+	background:URL(assets/imgs/ts-010.jpg) no-repeat;
+}
+

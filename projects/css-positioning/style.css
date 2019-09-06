@@ -1,0 +1,78 @@
+html,body {
+	height: 100%;
+}
+
+.static {
+	position: static;
+}
+
+.fixed {
+	position: fixed;
+	z-index: 10;
+}
+
+.absolute {
+	position: absolute;
+	z-index: 5;
+}
+
+.relative {
+	position: relative;
+	z-index: 11;
+}
+
+.box1 {
+	width: 10vw;
+	height: 200vh;
+}
+
+.box2-1 {
+	width: 30vw;
+	height: 30vh;
+	top: 10%;
+	left: 30%;
+}
+
+.box2-2 {
+	width: 20vw;
+	height: 40vh;
+	top: 40%;
+	left: 10%;
+}
+
+.box3 {
+	width: 50vw;
+	height: 10vh;
+	top: 10%;
+	left: 50%;
+}
+
+.box4 {
+	width: 25vw;
+	height: 25vh;
+	top: 30%;
+	left: 20%;
+}
+
+.box5 {
+	width: 60%;
+	height: 80%;
+	top: 5%;
+	left: 10%;
+}
+
+.bg-red {
+	background-color: #ff0000;
+}
+
+.bg-blue {
+	background-color: #0000ff;
+}
+
+.bg-yellow {
+	background-color: #ffff00;
+}
+
+.bg-olive {
+	background-color: #808000;
+}

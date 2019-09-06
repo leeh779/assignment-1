@@ -1,0 +1,53 @@
+html,
+body,
+.container {
+	height: 100%;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.box {
+	width: 10vw;
+	height: 10vh;
+}
+
+.container2 {
+	display: flex;
+}
+
+.topright {
+	align-self: flex-start;
+	width: 10vw;
+	height: 10vh;
+}
+
+.container3 {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+.bottomequal {
+	width: 10vw;
+	height: 10vh;
+}
+
+.bg-red {
+	background-color: #ff0000;
+}
+
+.bg-blue {
+	background-color: #0000ff;
+}
+
+.bg-yellow {
+	background-color: #ffff00;
+}
+
+.bg-olive {
+	background-color: #808000;
+}

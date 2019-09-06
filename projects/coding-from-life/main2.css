@@ -1,0 +1,211 @@
+/*
+  Coding from Life – Sketch 2: fluid layout
+
+  For sketch 2 you'll be positioning elements relative to a fluid container. This
+  means you'll need to use percentages when positioning and sizingelements within
+  your frame.
+*/
+
+
+body {
+  background-color: black;
+}
+
+.frame {
+  width: 95vw;
+  height: 57vw;
+  background: white;
+  margin: 2.5vw auto;
+  position: relative;
+}
+
+/* Your CSS goes here */
+.table {
+  position: absolute;
+  width: 80%;
+  height: 70%;
+  top: 10%;
+  left: 4%;
+}
+
+.table-trapezoid {
+  z-index: 1;
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  width: 100%;
+  height: 90%;
+  transform: skew(10deg);
+  background: #333333;
+}
+
+.table-side {
+  z-index: 0;
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  width: 100%;
+  height: 20%;
+  transform: skew(-10deg);
+  background: #666666;
+}
+
+.table-front {
+  z-index: 1;
+  position: absolute;
+  top: 90%;
+  left: 14.2%;
+  width: 100%;
+  height: 20%;
+  background: black;
+  cursor: pointer;
+}
+
+.table-front:after {
+  content: 'Drawing 2';
+  white-space: pre;
+  font-size: 5vw;
+  color: #fff;
+  font-family: courier;
+  padding-left: 60%;
+}
+
+.panel-wrapper {
+    position: absolute;
+    top: 3%;
+    left: 15%;
+    width: 70%;
+    height: 50%;
+}
+
+.panel {
+  z-index: 5;
+  position: relative;
+  float: left;
+  width: 15%;
+  height: 100%;
+  cursor: pointer;
+  margin: 0 7% 2% 0;
+  border: 2px solid rgba(0, 0, 0, .3);
+}
+
+.panel:after {
+  position: absolute;
+  content: '>';
+  color: #fff;
+  top: 65%;
+  left: 80%;
+}
+
+.panel:hover {
+  background: #000;
+}
+
+.panel-row1 {
+  width: 100%;
+  height: 35%;
+  clear: both;
+  z-index: 5;
+  position: relative;
+}
+
+.panel-row2 {
+  width: 100%;
+  height: 35%;
+  clear: right;
+  z-index: 5;
+  position: relative;
+  top: -7%;
+  left: 5%;
+}
+
+.panel-row3 {
+  width: 100%;
+  height: 35%;
+  clear: both;
+  z-index: 5;
+  position: relative;
+  top: -15%;
+  left: 15%;
+}
+
+.panel-row4 {
+  width: 100%;
+  height: 35%;
+  clear: both;
+  z-index: 5;
+  position: relative;
+  top: -24%;
+  left: 20%;
+}
+
+.panel-student {
+  position: absolute;
+  left: 10%;
+  color: #fff;
+  font-family: courier;
+}
+
+.panel-1 {
+  background-color: #b93eac;
+}
+
+.panel-2 {
+  background-color: #6f3eb9;
+}
+
+.panel-3 {
+  background-color: #4a3eb9;
+}
+
+.panel-4 {
+  background-color: #3e6db9;
+}
+
+.panel-5 {
+  background-color: #84b93e;
+}
+
+.panel-6 {
+  background-color: #3eb967;
+}
+
+.panel-7 {
+  background-color: #3eb9b5;
+}
+
+.panel-8 {
+  background-color: #3e98b9;
+}
+
+.panel-9 {
+  background-color: #b9b73e;
+}
+
+.panel-10 {
+  background-color: #b9a33e;
+}
+
+.panel-11 {
+  background-color: #b9863e;
+}
+
+.panel-12 {
+  background-color: #b95e3e;
+}
+
+.panel-13 {
+  background-color: #f25dcd;
+}
+
+.panel-14 {
+  background-color: #d94d8f;
+}
+
+.panel-15 {
+  background-color: #d94d4d;
+}
+
+.panel-16 {
+  background-color: #b93e3e;
+}

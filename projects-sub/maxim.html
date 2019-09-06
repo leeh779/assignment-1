@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Maddie H. Lee</title>
+  <link rel="stylesheet" href="https://use.typekit.net/ins6fbo.css">
+  <link rel="stylesheet" href="style.css">
+  <!--script src="jquery-3.2.1.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+        $(document).ready(function() {
+            $("#header").load("header.html");
+        });
+  </script-->
+</head>
+  <body>
+    <!--div id="header"></div-->
+    <!--top menu-->
+    <nav class="top-navi">
+        <h1 class="top-navi-left"><a href="../index.html">Maddie H. Lee</a></h1>
+        <div class="top-navi-right-hamburger">
+            <div class="top-navi-right-hamburger-line"></div>
+            <div class="top-navi-right-hamburger-line"></div>
+            <div class="top-navi-right-hamburger-line"></div>
+        </div>
+        <div class="top-navi-right">
+            <a href="../index.html">PROJECT</a>
+            <a href="../exercise/index.html">EXERCISE</a>
+            <a href="../about/index.html">ABOUT</a>
+        </div>
+    </nav>
+    <nav class="top-navi-right-hamburger-inner">
+        <ul class="top-navi-right-hamburger-inner-ul">
+            <li><a href="../index.html"><span style="color:#fff">PROJECT</span></a></li>
+            <li><a href="../exercise/index.html"><span style="color:#fff">EXERCISE</span></a></li>
+            <li><a href="../about/index.html"><span style="color:#fff">ABOUT</span></a></li>
+            <li class="top-navi-right-hamburger-inner-close"><span class="font-highlight">X</span></li>
+        </ul>
+    </nav>
+    <!--contents-->
+    <div class="content-wrapper">
+      <div class="content-block">
+        <div class="link" onclick="window.open('../projects/maxim/index.html', '_blank');">Link to Website</div>
+        <img src="imgs/maxim/maxim-full-1.jpg"><img src="imgs/maxim/maxim-full-2.jpg"><br><br>
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Overview</div>
+        <div class="content-block-right"><p>Project direction by professor: By definition, maxims are a short, pithy statement expressing a general truth or rule of conduct. For this project, collect a set of phrases from an existing source. Examples: Email subject lines, news headlines, dates, fortune cookie messages. Create a type-only website that displays these maxims in a compelling way. Consider the content of your maxims. What are they about and where are they coming from? How does the content change based on the hierarchy of your design and the way you’re breaking it up? You should have at least 15 different maxims on your website and your website should guide the user with control and interest.<br><br>Using only texts, I created a scene inspired by Lady Macbeth's sleepwalking scene. I visualized her fragile and guilty emotion of herself saying to her husband to kill Duncan. At first, she seemed she doesn't feel any guilty emotion about it but she can't get out of herself being overwhelmed as time goes by. Her emotional status is visually-dramatized in chaotic animations with the use of jQuery animation effects.</p></div>
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Skill set</div>
+        <div class="content-block-right"><p>HTML, CSS, jQuery</p></div>
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Duration</div>
+        <div class="content-block-right"><p>3 weeks including getting feedbacks from professor and critique in class<br>(February 5th ~ February 26th, 2019)</p></div>
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Process</div>
+        <div class="content-block-right"><p>1. Visual Presentation and Confirming the Concept<br>Before executing the website, I came up with 3 different versions of visual presentation -- 1: Lady Macbeth's room, 2: Pale color, 3: Mirror surfaces -- and discuss them in the class to set the visual concept. Each concept is presented with a brief description, mood board, and preview of the website using Sketch. Professor Nika advised me that the first and second version is more focusing on colors, whereas the third version is showing visually-interesting forms. She suggested me to make it more stronger by upgrading the navigation and layouts in the first version(the quotes below the circle looked less strong) and combine colors and layouts in the third version together. Also to place only texts that are kind of similar to mirror shapes, but not literally showing the shapes like shown in the third presentation.<br><br>2. Prototyping with Sketch<br><img src="imgs/maxim/process-1.jpg"><img src="imgs/maxim/process-2.jpg"><img src="imgs/maxim/process-3.jpg"><img src="imgs/maxim/process-4.jpg">Based on critiques from classmates in the class, I set the first concept 'Lady Macbeth's Room' to maximize creepy and scary atmosphere of the scene. The fourth image above shows the final prototyping of the website. In the final prototyping, the scenes are classified in 3 phases. The first scene showing confidence of Lady Macbeth, the second scene showing her fragility and guilty, and lastly the third scene showing her regret.<br><br>3. Execution with HTML, CSS, jQuery<br>In the first draft, the text animation was all linear. Professor Nika suggested me to change the navigation in Black background, which makes more sense to visualize Lady Macbeth's chaotic emotional status. In the final, I randomly set animation in Scene #2 by using jQuery.<br><br>4. Revision after critic<br>At first, I added "Click here to start" but professor Nika suggested that it'll be better to remove them to start experience right when the user access the website. <img src="imgs/maxim/process-5.jpg"><img src="imgs/maxim/process-6.jpg"><img src="imgs/maxim/process-7.jpg">Since the animation only goes linear, I changed the flow to go back and forth. "Out, I say!" and "Out, damned spot!" guide users into different direction: one is showing a image of Lady Macbeth which functions to go back when clicked and the other is showing a few sentences of regretting herself. Rather than clicking every single time to see the next sentence, I added automatic fade-in animation with jQuery.</p></div>
+      </div>
+    </div>
+    <!--contents//-->
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

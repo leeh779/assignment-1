@@ -1,0 +1,26 @@
+body {
+	background-color: blue;
+	font-size: 60px;
+}
+
+.word {
+	color: #fff;
+	display: inline-block;
+}
+
+.word:hover {
+	color: red;
+}
+
+.randomizer {
+	width: 350px;
+	padding: 8px 3px;
+	border: 1px solid black;
+	text-align: center;
+	cursor: pointer;
+}
+
+.randomizer:hover {
+	background-color: black;
+	color: white;
+}

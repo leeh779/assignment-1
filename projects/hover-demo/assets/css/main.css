@@ -1,0 +1,182 @@
+/* reset */
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: acumin-pro, sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    color: #fff;
+    text-align: left;
+    font-size: 1.5vw;
+    line-height: 1;
+    background: linear-gradient(-45deg, #050448, #191046, #4c29ca, #160cda);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 20s ease infinite;
+    animation : Gradient 20s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+/* structure */
+
+.content {
+  padding: 30% 0 0 65%;
+  margin: auto;
+}
+
+.content p {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+p {
+  cursor: pointer;
+}
+
+.white {
+  opacity: 0.2;
+}
+
+.white:hover {
+  animation: whiteIn 1s ease;
+}
+
+@keyframes whiteIn {
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+.wonderful {
+  padding: 1vw 1vw;
+  background-color: #010029;
+}
+
+.wonderful:hover {
+  background: linear-gradient(-45deg, #fcff00, #ff9600, #90ff00, #f000ff);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 2s ease infinite;
+  animation : Gradient 2s ease infinite, wonderfulPadding 1s ease infinite;
+}
+
+@keyframes wonderfulPadding {
+  0% { padding: 1vw 1vw; }
+  100% { padding: 1vw 1vw 1vw 11vw; }
+}
+
+.shine:hover {
+  color: #fcff00;
+  font-family: acumin-pro-condensed, sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  animation: Shine 1s infinite;
+}
+
+@keyframes Shine {
+  0% { opacity: 1; }
+  25% { opacity: 0; }
+  50% { opacity: 1; }
+  75% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.rotate:hover {
+  opacity: 1;
+  animation: Rotate 1s ease;
+  transition: transform .7s ease;
+  transform-style: preserve-3d;
+}
+
+@keyframes Rotate {
+  0% {transform: rotateY(0deg);}
+  50% {transform: rotateY(-180deg);}
+  100% {transform: rotateY(0deg);}
+}
+
+.stargif:hover {
+  opacity: 1;
+  content: url(https://media.giphy.com/media/rXHKRU96pSJNe/giphy.gif);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.whoknows1:hover {
+  animation: whoknows1 .7s ease;
+}
+
+@keyframes whoknows1 {
+  0% {
+    opacity: 0.2;
+    color: #fff;
+  }
+  100% {
+    opacity: 1;
+    color: #f000ff;
+  }
+}
+
+.whoknows2:hover {
+  animation: whoknows2 .7s ease;
+}
+
+@keyframes whoknows2 {
+  0% {
+    opacity: 0.2;
+    color: #fff;
+  }
+  100% {
+    opacity: 1;
+    color: #90ff00;
+  }
+}
+
+.underline {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+}
+
+.underline:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #fcff00;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.underline:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}

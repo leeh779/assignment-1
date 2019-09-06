@@ -1,0 +1,409 @@
+body {
+  font-family: arial;
+  color: red;
+  font-size: 100px;
+}
+
+.container {
+  height: 100vh;
+  margin: 4% 0 0 20%;
+}
+
+.abs {
+	position: absolute;
+}
+
+.rect1 {
+	margin: 5.6% 0 0 0;
+	width: 30vw;
+	height: 10vh;
+	background: #E5426E;
+	transform: rotate(25deg);
+}
+
+.rect1:hover {
+	cursor: pointer;
+	animation: rect1Color 1s ease-in-out infinite alternate;
+}
+
+@keyframes rect1Color {
+	0% {
+		background: #E5426E;
+	}
+	50% {
+		background: #C08FFF;
+	}
+	100% {
+		background: #64FFBE;
+	}
+}
+
+.cline-group {
+	width: 10vw;
+	height: 45vh;
+	margin: 7% 0 0 5%;
+}
+
+#cline-left {
+	z-index: 2;
+	width: 8vw;
+	margin: -6% 0 0 -2%
+}
+
+#cline-bg {
+	z-index: 0;
+	width: 6vw;
+	margin: 5% 0 0 16%;
+	transform: rotate(-5deg);
+}
+
+#cline-right {
+	z-index: 1;
+	width: 6vw;
+	margin: 4% 0 0 31%;
+}
+
+#zigzag {
+	z-index: 3;
+	margin: 152% 0 0 30%;
+	width: 5vw;
+	transform: rotate(90deg);
+}
+
+.rectb-group {
+	width: 25vw;
+	height: 10vh;
+    margin: 15% 0 0 15%;
+}
+
+.rectb {
+	z-index: 4;
+	height: 2vh;
+	background-color: black;
+}
+
+.rectb-1 {
+	margin: 0 0 0 0;
+	width: 10vw;
+}
+
+.rectb-2 {
+	margin: 10% 0 0 5%;
+	width: 10vw;
+}
+
+.rectb-3 {
+	margin: 20% 0 0 0;
+	width: 7vw;
+}
+
+.circle1 {
+	background: white;
+	width: 3vw;
+	height: 5vh;
+	border-radius: 50%;
+	margin: 0.7% 0 0 0.8%;
+}
+
+.circle1:active {
+	cursor: pointer;
+	background-color: #f9f100;
+}
+
+.circle2 {
+	background: white;
+	width: 2vw;
+	height: 3vh;
+	border-radius: 50%;
+	margin: 8% 0 0 13%;
+}
+
+.circle3 {
+	z-index: 5;
+	background: white;
+	width: 2vw;
+	height: 3.5vh;
+	border-radius: 50%;
+	margin: 13.5% 0 0 23%;
+}
+
+.circle4 {
+	z-index: 6;
+	background: white;
+	width: 2.5vw;
+	height: 4vh;
+	border-radius: 50%;
+	margin: 10% 0 0 39%;
+	animation: circle4Move 4s ease-in-out infinite alternate;
+}
+
+@keyframes circle4Move {
+	0% {
+		margin: 10% 0 0 39%;
+		background: #fff;
+	}
+	30% {
+		margin: 10% 0 0 55%;
+		background: #6fff61;
+	}
+	60% {
+		margin: 10% 0 0 20%;
+		background: #C08FFF;
+	}
+	100% {
+		margin: 10% 0 0 39%;
+		background: #fff;
+	}
+}
+
+.tri-group {
+	width: 20vw;
+	height: 15vh;
+	margin: 5.5% 0 0 29%;
+	z-index: 5;
+}
+
+#tri1 {
+	width: 6vw;
+}
+
+#tri2 {
+	width: 4vw;
+	margin: -5% 0 0 17%;
+	fill:#FF25EC;
+}
+
+#tri2:hover {
+	cursor: pointer;
+	animation: tri2Move 2s ease-in-out infinite;
+}
+
+@keyframes tri2Move {
+	0% {
+		margin: -5% 0 0 17%;
+	}
+	50% {
+		margin: -5% 0 0 100%;
+		fill: #F9F100;
+	}
+	100% {
+		margin: -5% 0 0 17%;
+		fill: #FF25EC;
+	}
+}
+
+#tri3 {
+	width: 7vw;
+	margin: 3% 0 0 30%;
+	fill:#8800F9;
+	animation: tri3Move 2s ease-in-out infinite;
+}
+
+@keyframes tri3Move {
+	0% {
+		margin: 3% 0 0 30%;
+	}
+	50% {
+		margin: 3% 0 0 70%;
+		fill: #FF25EC;
+	}
+	100% {
+		margin: 3% 0 0 30%;
+		fill:#8800F9;
+	}
+}
+
+#tri4 {
+	width: 5.5vw;
+    margin: 8% 0 0 54%;
+}
+
+#bbar {
+	z-index: 7;
+	width: 36vw;
+	margin: 15% 0 0 5%;
+	animation: bbarRotate 1s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes bbarRotate {
+	0% {
+	}
+	100% {
+		transform: rotate(50deg);
+	}
+}
+
+
+.circle5 {
+	z-index: 8;
+	background: white;
+	width: 4vw;
+	height: 7vh;
+	border-radius: 50%;
+	margin: 32% 0 0 8%;
+	animation: circle5Move 1s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes circle5Move {
+	0% {
+		margin: 32% 0 0 8%;
+	}
+	100% {
+		margin: 45% 0 0 2%;
+		background: #e600c0;
+	}
+}
+
+.circle5:active {
+	cursor: pointer;
+	background-color: #09009D;
+}
+
+.rect2 {
+	z-index: 6;
+	margin: 29% 0 0 15%;
+	width: 33vw;
+	height: 12vh;
+	background: #C08FFF;
+	transform: rotate(25deg);
+}
+
+.rect2:hover {
+	cursor: pointer;
+	animation: rect2Color 1s ease-in-out infinite alternate;
+}
+
+.rect3 {
+	z-index: 5;
+	margin: 37% 0 0 20%;
+	width: 30vw;
+	height: 10vh;
+	background: #64FFBE;
+	transform: rotate(25deg);
+}
+
+.rect3:hover {
+	cursor: pointer;
+	animation: rect3Color 1s ease-in-out infinite alternate;
+}
+
+@keyframes rect3Color {
+	0% {
+		background: #C08FFF;
+	}
+	50% {
+		background: #E5426E;
+	}
+	100% {
+		background: #64FFBE;
+	}
+}
+
+.rectb-group2 {
+	width: 15vw;
+	height: 20vh;
+	z-index: 7;
+    margin: 27% 0 0 46%;
+    transform: rotate(24deg);
+}
+
+.rectb-4 {
+	margin: 25% 0 0 0;
+	width: 1.5vw;
+	height: 20vh;
+	background: #000;
+}
+
+.rectb-4:hover {
+	cursor: pointer;
+	animation: rectb4Move 2s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes rectb4Move {
+	0% {
+		margin: 25% 0 0 0;
+	}
+	50% {
+		margin: 75% 0 0 0;
+		background: #FF4953;
+	}
+	100% {
+		margin: 25% 0 0 0;
+	}
+}
+
+
+.rectb-5 {
+	margin: 100% 0 0 15%;
+	width: 1.5vw;
+	height: 20vh;
+	background: #000;
+}
+
+.rectb-5:hover {
+	cursor: pointer;
+	animation: rectb5Move 2s ease-in-out infinite;
+}
+
+@keyframes rectb5Move {
+	0% {
+		margin: 100% 0 0 15%;
+	}
+	50% {
+		margin: 0% 0 0 15%;
+		background: #FFF11D;
+	}
+	100% {
+		margin: 100% 0 0 15%;
+	}
+}
+
+.rectb-6 {
+	margin: 50% 0 0 30%;
+	width: 1.5vw;
+	height: 20vh;
+	background: #000;
+}
+
+.rectb-6:hover {
+	cursor: pointer;
+	animation: rectb6Move 0.5s ease-in-out infinite;
+}
+
+@keyframes rectb6Move {
+	0% {
+		margin: 50% 0 0 30%;
+	}
+	50% {
+		margin: 20% 0 0 30%;
+		background: #5C15FF;
+	}
+	100% {
+		margin: 50% 0 0 30%;
+	}
+}
+
+.rectb-7 {
+	margin: 0 0 0 45%;
+	width: 1.5vw;
+	height: 17vh;
+	background: #000;
+}
+
+.rectb-7:hover {
+	cursor: pointer;
+	animation: rectb7Move 1.5s ease-in-out infinite;
+}
+
+@keyframes rectb7Move {
+	0% {
+		margin: 0 0 0 45%;
+	}
+	50% {
+		margin: 40% 0 0 45%;
+		background: #E5426E;
+	}
+	100% {
+		margin: 0% 0 0 45%;
+	}
+}

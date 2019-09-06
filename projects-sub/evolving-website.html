@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Maddie H. Lee</title>
+  <link rel="stylesheet" href="https://use.typekit.net/ins6fbo.css">
+  <link rel="stylesheet" href="style.css">
+  <!--script src="jquery-3.2.1.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+        $(document).ready(function() {
+            $("#header").load("header.html");
+        });
+  </script-->
+</head>
+  <body>
+    <!--div id="header"></div-->
+    <!--top menu-->
+    <nav class="top-navi">
+        <h1 class="top-navi-left"><a href="../index.html">Maddie H. Lee</a></h1>
+        <div class="top-navi-right-hamburger">
+            <div class="top-navi-right-hamburger-line"></div>
+            <div class="top-navi-right-hamburger-line"></div>
+            <div class="top-navi-right-hamburger-line"></div>
+        </div>
+        <div class="top-navi-right">
+            <a href="../index.html">PROJECT</a>
+            <a href="../exercise/index.html">EXERCISE</a>
+            <a href="../about/index.html">ABOUT</a>
+        </div>
+    </nav>
+    <nav class="top-navi-right-hamburger-inner">
+        <ul class="top-navi-right-hamburger-inner-ul">
+            <li><a href="../index.html"><span style="color:#fff">PROJECT</span></a></li>
+            <li><a href="../exercise/index.html"><span style="color:#fff">EXERCISE</span></a></li>
+            <li><a href="../about/index.html"><span style="color:#fff">ABOUT</span></a></li>
+            <li class="top-navi-right-hamburger-inner-close"><span class="font-highlight">X</span></li>
+        </ul>
+    </nav>
+    <!--contents-->
+    <div class="content-wrapper">
+      <div class="content-block">
+        <div class="link" onclick="window.open('../projects/evolving-website/index.html', '_blank');">Link to Website</div>
+        <img src="imgs/evolving-website/evolving-website-full-1.jpg"><br><img src="imgs/evolving-website/evolving-website-full-2.jpg">
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Overview</div>
+        <div class="content-block-right"><p>Project direction by professor: We’ve explored different ways that you can use the web for personal publishing, art, storage and reading. Now, let’s consider another difference between print and digital design – it’s live! Not only is it easy to change and update digital work, you also have access to an entire community of data and people. How can you create a website that changes, either with time or content? You can consider using a public API to generate part of the content, or find another solution to generate content that’s out of your control.</p></div>
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Skill set</div>
+        <div class="content-block-right"><p>HTML, CSS, jQuery, API, Photoshop</p></div>
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Duration</div>
+        <div class="content-block-right"><p>5 weeks including getting feedbacks from professor, critique in class and spring break<br>(April 9th ~ May 8th, 2019)</p></div>
+      </div>
+      <div class="content-block">
+        <div class="content-block-left">Process</div>
+        <div class="content-block-right"><p>1. Visual Presentation and Confirming the Concept<br><img src="imgs/evolving-website/process-1.jpg"><img src="imgs/evolving-website/process-2.jpg"><img src="imgs/evolving-website/process-3.jpg"><img src="imgs/evolving-website/process-4.jpg"><img src="imgs/evolving-website/process-5.jpg"><img src="imgs/evolving-website/process-6.jpg">First I came up with different APIs: NASA Astronomy Picture Of the Day(APOD), Cooper Hewitt, and Currents news. After getting critic from classmates and professor Nika, I decided to use NASA APOD. <img src="imgs/evolving-website/process-7.jpg"><img src="imgs/evolving-website/process-8.jpg"><img src="imgs/evolving-website/process-9.jpg"><img src="imgs/evolving-website/process-10.jpg"><br><br>Through the second phase, I developed the idea further into using birthday data of user. I combined Zodiac signs and Glows by mousemove to make it more interactive. However this concept still doesn't convey strong ideas and only uses existing animation so I focused more on user's data, birthday and how I can make the users to engage with the website. As a result, I chose to create different geometric animations that are changed according to user's data.<br><br>
+        2. Wireframe<br>
+        <img src="imgs/evolving-website/evolving-website-full-3.jpg">
+        Using sketch, I drew a rough wireframe for the website. The image above shows how the shapes are randomized by certain data.
+        <br><br>
+        3. Pattern design<br>
+        <img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-1.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-2.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-3.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-4.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-5.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-6.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-7.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-8.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-9.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-10.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-11.png"><img style="width: 100px;" src="../projects/evolving-website/assets/imgs/bgpattern-month-12.png"><br>
+        To make more variations, I created a set of patterns which changes according to month. Designed patterns are originally inspired by Memphis design movement and the artist named Nathalie du pasquier.<br><br>
+        4. Code<br>
+        <img src="imgs/evolving-website/evolving-website-full-4.jpg">
+        Finally, using jQuery, I randomized birthday input data within position, size of geometric shapes. Since the year data is too big to use, I only used the last two digits. Also because I can't use the input data before users type their birthday, I used weather API to change bottom patterns according to humidity.</p>
+        </div>
+      </div>
+    </div>
+    <!--contents//-->
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
