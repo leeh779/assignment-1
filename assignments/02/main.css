@@ -1,0 +1,30 @@
+/*Circle*/
+#myPatternOneWrapper{
+	display: inline-block;
+}
+
+.myPatternOneWrapper {
+	width: 100px;
+	height: 100px;
+}
+
+.patternUnitOne{
+	box-sizing: border-box;
+	position: relative;
+	top: 0%;
+	left: 0%;
+	height: 100%;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	animation: generate 1s ease-in-out infinite;
+}
+
+@keyframes generate {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
