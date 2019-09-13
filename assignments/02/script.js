@@ -1,7 +1,11 @@
 	var myWrapper = document.getElementById("myWrapper");
 
-	  	for (var i = 0; i < 100; i++) {
-	  		for (var j = 0; j < 4; j++) {
-	  			myWrapper.innerHTML += '<div id="myPatternOneWrapper" class="myPatternOneWrapper" style="background:URL(assets/bgpattern-'+ j +'.png) repeat);"><div class="patternUnitOne" style="transform:rotate('+ 90*i +'deg)"></div></div>'	
-	  		}
+	  	for (var i = 0; i < 110; i++) {
+	  		myWrapper.innerHTML += '<div class="patternUnitWrapper"><div class="patternUnitOne" style="transform: rotate('+90*i+'deg)"></div></div>'
 	  	}
+
+	var myWrapperTwo = document.getElementById("myWrapperTwo");
+	  	for (var j = 0; j < 100; j++) {
+	  		myWrapperTwo.innerHTML += '<div class="patternTwoUnitWrapper"><div class="patternTwoUnitOne" style="transform: rotate('+45*j+'deg)"></div></div>'
+	  	}
+
