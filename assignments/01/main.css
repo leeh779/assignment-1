@@ -1,103 +1,57 @@
-html, body { 
-	height: 100%;
-	width: 100%;
-	margin: 0;
+/*Circle*/
+
+.patternUnitWrapper {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
 }
 
-h1 {
-	text-align: center;
-	font-size: 48px;
-	color: #543E1D;
-	font-family: ff-providence-sans-web-pro, sans-serif;
-	font-weight: 400;
-	font-style: normal;
+.patternUnitOne{
+	box-sizing: border-box;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+	animation: generate 1s ease-in-out infinite;
 }
 
-.paragraph-story {
-  font-family: dita, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: left;
+.patternUnitTwo{
+	display: inline-block;
+	width: 60px;
+	height: 60px;
 }
 
-/*card*/
-.cardalign {
-  margin-left: 50px;
-}
-
-.scene {
-  float: left;
-  width: 250px;
-  height: 400px;
-  margin: 10px 5px;
-  perspective: 600px;
-}
-
-.card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 10%;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transform-origin: center right;
-  transition: transform 1s;
-}
-
-.card.is-flipped {
-  transform: translateX(-100%) rotateY(-180deg);
-}
-
-.card__face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 10%;
-  color: white;
-  font-family: ff-providence-sans-web-pro, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-align: center;
-  font-size: 20px;
-  backface-visibility: hidden;
-}
-
-.card__face--front {
-  background: #543E1D;
-}
-
-.card__face--front:hover {
-  background: URL(img/table-bg.jpg);
-}
-
-.card__face--back {
-  background: #B80000;
-  transform: rotateY(180deg);
-}
-
-.card__face p {
-  padding: 10px;
-}
-
-.card__face--back-title {
-  font-family: ff-providence-sans-web-pro, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-}
-
-/* for mobile */
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 28px;
+@keyframes generate {
+  0% {
+    width: 0%;
   }
+
+  100% {
+    width: 100%;
+  }
+}
+
+
+
+.myWrapperTwo {
+	z-index: -10;
+	position: absolute;
+	top: 10%;
+	left: 0%;
+}
+
+
+.patternTwoUnitWrapper {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	padding: 5px;
+}
+
+.patternTwoUnitOne {
+	display:inline-block;
+	width: 100%;
+	height: 100%;
+	border:1px solid blue;
 }
