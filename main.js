@@ -11,6 +11,8 @@ $(document).ready(function() {
       $(this).toggleClass("visited");
 	});
 
+
+
 	$('.list-content').hover(
     function() {
         var $this = $(this); // caching $(this)
@@ -21,6 +23,7 @@ $(document).ready(function() {
         var $this = $(this); // caching $(this)
         $this.text($this.data('defaultText'));
     });
+
 
 
     for (var i = 1; i < 4; i++) {

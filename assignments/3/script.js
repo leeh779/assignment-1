@@ -40,7 +40,8 @@ var myAppendingFunctionTwo = function() {
 		var moduleTwo = `
 			  <div class="moduletwo" style="
 			  background:rgb(${moduleTwoR+(3*i)},100,${moduleTwoB+i});
-			  transform: rotate(${minusI*30}deg);">
+			  transform: rotate(${minusI*30}deg);
+			  opacity: 0.5;">
 			  </div>
 			`
 
@@ -49,7 +50,8 @@ var myAppendingFunctionTwo = function() {
 		var moduleTwo = `
 			  <div class="moduletwo" style="
 			  background:rgb(${moduleTwoR+i},50,${moduleTwoB+i});
-			  transform: rotate(${minusI}deg);">
+			  transform: rotate(${minusI}deg);
+			  opacity: 0.7;">
 			  </div>
 			`
 
@@ -104,6 +106,7 @@ var myAppendingFunctionThree = function() {
 	  clearInterval(myAnimatingThree);
 	}
 }
+
 
 var myAppendingFunctionFour = function() {
 
