@@ -23,22 +23,23 @@ $(document).ready(function() {
     });
 
 
-	/*NDA Alert*/
-	$("#modal").hide();
-	$("#prompt").hide();
+    for (var i = 1; i < 4; i++) {
 
-	$(".open-modal").on("click", function(event){
-	  event.preventDefault();
-	  event.stopPropagation();
-	  $("#modal").show("closed");
-	});
+      var outputDiv = `
+      <div class="gallery-placeholder">
+            <img src="assets/imgs/assignments-preview/${i}.jpg">
+            <div class="gallery-content" onclick="location.reload();location.href='assignments/${i}/index.html'">
+                Assignment ${i}
+            </div>
+      </div>
+    `
+      var appendToX = function (id, output) {
+        document.getElementById(id).insertAdjacentHTML('afterbegin',output);
+      }
 
-	$("button").on("click", function(){
-	  $("#modal").fadeOut();
-	});
+      appendToX("gallery", outputDiv);
+      
+    }
 
-	$(".modal-container").on("click", function(){
-	  $("#modal").fadeOut();
-	});
 
 });
