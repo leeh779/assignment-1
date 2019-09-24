@@ -2,13 +2,21 @@ body {
 	background-color: #000;
 }
 
+#wrapper-1-parent {
+	/*position: relative;*/
+}
+
 .wrapper-1 {
-	position: absolute;
-	top: 54%;
-	left: 35%;
 	width: 500px;
 	height: 500px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	margin: 5px 0 0 -250px;
 }
+
 
 /*.wrapper-2 {
 	
@@ -54,49 +62,79 @@ body {
 
 
 
-.wrapper-3 {
+.wrapper-3 /*green diamonds*/  {
 	width: 700px;
 	height: 700px;
-	margin: 0 auto;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	margin: -350px 0 0 -350px;
 }
 
-.modulethree {
+.modulethree /*green diamonds - line*/ {
 	border-radius: 50%;
 	height: 2px;
 }
 
+/*#wrapper-4to5 {
+	position: absolute;
+	top: 0;
+	width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}*/
+
 .wrapper-4 {
+	width: 500px;
+	height: 440px;
+
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 500px;
-	height: 500px;
+
+	margin: 4px 0 0px -2px;
 }
 
 .wrapper-5 {
-	position: absolute;
-	top: 0%;
-	left: 50%;
 	width: 500px;
-	height: 500px;
+	height: 440px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	margin: -465px 0 0px -32px;
+
 	transform: rotate(-90deg);
 }
 
 .wrapper-6 {
-	position: absolute;
-	top: 0%;
-	left: 20%;
 	width: 500px;
-	height: 500px;
+	height: 440px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	margin: -440px 0 0 -500px;
+
 	transform: rotate(-180deg);
 }
 
 .wrapper-7 {
-	position: absolute;
-	top: 54%;
-	left: 20%;
 	width: 500px;
-	height: 500px;
+	height: 440px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	margin: 36px 0 0 -500px;
+
 	transform: rotate(-270deg);
 }
 
