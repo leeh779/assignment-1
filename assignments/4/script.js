@@ -1,3 +1,6 @@
+document.addEventListener('DOMContentLoaded', function (event) {
+
+
 var appendToX = function(id, output) {
 	document.getElementById(id).insertAdjacentHTML('beforeend',output);
 }
@@ -163,18 +166,18 @@ var myAnimatingFour = setInterval (myAppendingFunctionFour, 1);
 		var myAppendingFunctionFive = function() {
 			var body = document.querySelector("body");
 			var addedballR = i*10
-			var addedballB = i+20
+			var addedballB = i+25
 
 			var addedBall = `
 				<div class="addedball" style="
-					border-color: rgb(${addedballR},30,${addedballB+(i*7)});">
+					border-color: rgb(${addedballR},179,${addedballB});">
 				</div>
 				`
 			appendToX("body", addedBall);
 
 			i++;
 
-			if(i >= 400) {
+			if(i >= 250) {
 			  clearInterval(myAnimatingFive);
 			}
 		}
@@ -261,4 +264,4 @@ var dotScaleChange = function(event){
 
 
 
-
+});

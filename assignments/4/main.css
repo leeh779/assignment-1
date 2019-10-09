@@ -226,7 +226,7 @@ body {
 
 @keyframes addedBallColorScale {
 	0% {
-		transform: scale(7);
+		transform: scale(5);
 	}
 
 	100% {
