@@ -76,6 +76,7 @@ body {
 }
 
 
+
 /* dots */
 .wrapper-4 {
 	width: 500px;
@@ -128,8 +129,17 @@ body {
 }
 
 .modulefour-wrapper {
+	display: inline-block;
 	width: 30px;
 	height: 30px;
+}
+
+/*.modulefour-wrapper:hover .modulefour{
+	animation: modulefourScale 1s ease-in-out;
+}*/
+
+.modulefour:hover {
+	animation: modulefourScale 1s ease-in-out;
 }
 
 .modulefour {
@@ -139,7 +149,9 @@ body {
 	border-radius: 50%;
 	transform: scale(1);
 	transition: transform 4s;
-	/*transition: background-color 4s;*/
+	transition: background-color 4s;
+	transition: opacity 4s;
+	transition: filter 4s;
 }
 
 @keyframes modulefourScale {
@@ -148,8 +160,57 @@ body {
 	100% { transform: scale(1); }
 }
 
-.modulefour:hover {
-	animation: modulefourScale 1s ease-in-out;
+
+/** Adding Circle **/
+
+.ball-wrapper {
+	z-index: 10;
+	width: 500px;
+	height: 500px;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -250px 0 0 -250px;
+
+	background: rgba(0,0,0,0);
 }
 
+.ball {
+  z-index: 10;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ffc776;
+  background-color: rgba(0,0,0,0);
 
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin: -100px 0 0 -100px;
+}
+ 
+
+.ball-wrapper:hover .ball{
+	animation: ballColorScale 1.5s ease-in-out;
+}
+
+@keyframes ballColorScale {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(0.3);
+	}
+
+	70% {
+		transform: scale(7);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}

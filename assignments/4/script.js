@@ -113,11 +113,13 @@ var myAppendingFunctionFour = function() {
 	var moduleFourR = 11*i
 
 	var moduleFour = `
+		
 			<div class="modulefour" style="
 				background: rgb(${moduleFourR},${i},${i});
 				margin-right: ${i}px;
 				opacity: ${0.005*i};">
 			</div>
+		
 		`
 
 
@@ -150,6 +152,15 @@ var myAnimatingFour = setInterval (myAppendingFunctionFour, 1);
 
 /** Interactive **/
 
+
+/* Oct8 Circle */
+var ballColorScale = function(event){
+	var myBall = document.getElementById("ball");
+
+	
+
+}
+/* Oct8 Circle END */
 
 
 // eventListener for hover: mouseover, mouseout
