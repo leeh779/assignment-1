@@ -154,12 +154,33 @@ var myAnimatingFour = setInterval (myAppendingFunctionFour, 1);
 
 
 /* Oct8 Circle */
-var ballColorScale = function(event){
-	var myBall = document.getElementById("ball");
 
-	
 
-}
+
+	var myBall = document.getElementById("ball-wrapper");
+
+	myBall.addEventListener("mouseout", function(){
+		var myAppendingFunctionFive = function() {
+			var body = document.querySelector("body");
+			var addedballR = i*10
+			var addedballB = i+20
+
+			var addedBall = `
+				<div class="addedball" style="
+					border-color: rgb(${addedballR},30,${addedballB+(i*7)});">
+				</div>
+				`
+			appendToX("body", addedBall);
+
+			i++;
+
+			if(i >= 400) {
+			  clearInterval(myAnimatingFive);
+			}
+		}
+
+		var myAnimatingFive = setInterval (myAppendingFunctionFive, 1);
+	})
 /* Oct8 Circle END */
 
 
