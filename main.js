@@ -26,7 +26,7 @@ $(document).ready(function() {
 
 
 
-    for (var i = 1; i < 4; i++) {
+    for (var i = 1; i < 5; i++) {
 
       var outputDiv = `
       <div class="gallery-placeholder">
