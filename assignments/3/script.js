@@ -146,3 +146,81 @@ var myAnimatingFour = setInterval (myAppendingFunctionFour, 1);
 // }
 
 
+
+
+
+// eventListener for hover: mouseover, mouseout
+
+/**dotScaleChange upon Scrolling**/
+var dotScaleChange = function(event){
+	var myDotsWrapper = document.getElementById("wrapper-4");
+	var myDots = document.getElementsByClassName("modulefour");
+	
+	for (var i = 0; i < myDots.length; i++) {
+		myDots[i].style.transform = "scale(6)";
+		myDots[i].style.backgroundColor = "rgb(221,255,0)";
+	}
+
+	myDots.addEventListener("mouseover", dotScaleChange)
+}
+
+// var body = document.querySelector("body");
+// var percentageScrolled = (window.scrollY + window.innerHeight)/body.offsetHeight;
+// console.log(percentageScrolled)
+
+// if (percentageScrolled >= 1) {
+// 	window.addEventListener("scroll", dotScaleChange)
+// }
+
+
+
+
+// /* According to position of a cursor, dot scale changes.*/
+// var myDots = document.getElementsByClassName("modulefour");
+
+// console.log(myDots)
+
+// var myDotsPosition = myDots.getBoundingClientRect();
+// myDotsPosition.x //Left position of myDots
+// myDotsPosition.y //Top position of myDots
+
+// console.log(myDotsPosition.x, myDotsPosition.y);
+
+
+// e = e || window.event;
+
+//     var pageX = e.pageX;
+//     var pageY = e.pageY;
+
+// /*This should be only works for dots near a cursor*/
+// if (myDotsPosition = 1 && pageX = 1) {
+// 	for (var i = 0; i < myDots.length; i++) {
+// 		myDots[i].style.transform = "scale(6)";
+// 		myDots[i].style.backgroundColor = "rgb(221,255,0)";
+// 	}
+// }
+
+
+
+/* memo */
+// var closestDot = null;
+
+// var myDots = document.getElementsByClassName("modulefour");
+
+// window.addEventListener("mousemove", function(e){
+
+//     // we have the mouse positions and we want to compare 
+//     // them to each dot position
+//     // closest dot will contain the closest dot to the cursor
+
+//     var pageX = e.pageX;
+//     var pageY = e.pageY;
+
+//     for (var i = 0; i < myDots.length; i++) {
+//     	if(Math.abs(myDots[i].getBoundingClientRect().top - pageY) < closestDot){
+
+//     	}
+//     }
+
+// })
+
