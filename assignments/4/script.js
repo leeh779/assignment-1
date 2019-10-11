@@ -1,6 +1,26 @@
 document.addEventListener('DOMContentLoaded', function (event) {
 
 
+/*Reverse Animation*/
+var newAnimation = function(){
+	var lines = document.querySelectorAll(".modulethree");
+	console.log(lines);
+
+	var counter = 0;
+
+	for (var i = 0; i < lines.length; i++) {
+	  
+	  setTimeout(function(){
+	  	lines[counter].remove()
+	  	counter++;
+	  }, i*50)
+	  
+	  // lines[i]
+	}
+
+	console.log(lines[i]);
+};
+
 
 
 var appendToX = function(id, output) {
@@ -48,6 +68,9 @@ var j = 0
 			j++;
 
 			if(j >= 500) {
+			
+			  newAnimation();
+			
 			  clearInterval(myAnimatingThree);
 			}
 		}
@@ -58,26 +81,14 @@ var j = 0
 		console.log(lines); /* Can't select modulethree........ */
 
 
-	/*Reverse Animation*/
-	// var newAnimation = function(){
-	// 	var lines = document.querySelectorAll(".modulethree");
-	// 	console.log(lines);
-
-
-	// 	for (var i = 0; i < lines.length; i++) {
-	// 		// lines[lines.length - 1 - i]
-	// 		lines[i]
-	// 	}
-
-	// 	console.log(lines[i]);
-	// };
+	
 
 
 	// setTimeout(function(){
 
-	// 	if(lastAnimation){
-	// 		newAnimation();
-	// 	}
+	// if(lastAnimation){
+	//   newAnimation();
+	// }
 
 	// }, 700*i);
 
