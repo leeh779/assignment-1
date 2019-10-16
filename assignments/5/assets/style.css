@@ -1,0 +1,47 @@
+.flex-center {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.spacex-logo {
+	display: inline-block;
+	width: 13%;
+	margin-top: 1%;
+}
+
+.info-maintop {
+	text-align: right;
+	color: #fff;
+	font-size: 20px;
+	padding: 10px;
+	font-family: source-code-pro, monospace;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.info-maintop-point {
+	color: #66ff00;
+	text-transform: uppercase;
+}
+
+.info-maintop-link {
+	color: #66ff00;
+}
+
+.info-maintop-link:link {
+	color: #66ff00;
+}
+
+.info-maintop-link:visited {
+	color: #66ff00;
+}
+
+.info-maintop-link:hover {
+	color:#1e5284;
+}
+
+.info-maintop-link:active {
+	color: #66ff00;
+}
