@@ -9,7 +9,7 @@ fetch('/assets/my.json')
 
 	document.querySelector("#root").insertAdjacentHTML('afterbegin', 
 		`
-		<h1 style="color:rgb(${jsonResults.color.listofColors[2]});">${jsonResults.title}</h1> 
+		<h1 style="color:${jsonResults.colors.listofColors[1]};">${jsonResults.title}</h1> 
 		`
 	)
 
