@@ -1,0 +1,8 @@
+{
+	"title": "Asynchronous Fetching",
+	"color": [ 0, 255, 0 ],
+	"boolean" : true,
+	"colors" : {
+		"listofColors" : ["red", "green", "purple"]
+	}
+}

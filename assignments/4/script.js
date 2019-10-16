@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function (event) {
 
+// document.getElementById("ball-wrapper").style.display = "none"; 
 
 /*Reverse Animation*/
 var newAnimation = function(){
@@ -13,14 +14,23 @@ var newAnimation = function(){
 	  setTimeout(function(){
 	  	lines[counter].remove()
 	  	counter++;
+
+	 //  	if( counter = lines.length - 1 ) {
+		//   document.getElementById("ball-wrapper").style.display = "inline"; 
+		// }
 	  }, i*50)
 	  
-	  // lines[i]
 	}
-
 	console.log(lines[i]);
+
 };
 
+
+var circleAnimation = function(){
+
+	document.getElementById("ball-wrapper").style.display = "inline"; 
+
+}
 
 
 var appendToX = function(id, output) {
@@ -29,23 +39,22 @@ var appendToX = function(id, output) {
 
 
 var i = 0
-var j = 0
 
 		/*myAppendingFunctionThree*/
 		var myAppendingFunctionThree = function() {
 
-			var moduleThreeG = 99+j;
-			var moduleThreeB = 2+j;
-			var minusI = (-1)*j
+			var moduleThreeG = 99+i;
+			var moduleThreeB = 2+i;
+			var minusI = (-1)*i
 
-			if (j%2 === 0) {
+			if (i%2 === 0) {
 
 				var moduleThree = `
 					  <div class="modulethree" style="
 					  opacity: 0.1;
 					  transform: rotate(${minusI}deg);
 					  background:rgb(200,${moduleThreeG+(50*i)},200);
-					  margin-right: ${j*10};">
+					  margin-right: ${i*10};">
 					  </div>
 					`
 
@@ -54,9 +63,9 @@ var j = 0
 				var moduleThree = `
 					  <div class="modulethree" style="
 					  opacity: 0.05;
-					  transform: rotate(${j}deg);
-					  background: rgb(10,${moduleThreeG+(10*j)},${moduleThreeB*j});
-					  margin-right: ${j*5};">
+					  transform: rotate(${i}deg);
+					  background: rgb(10,${moduleThreeG+(10*i)},${moduleThreeB*i});
+					  margin-right: ${i*5};">
 					  </div>
 					`
 
@@ -65,32 +74,15 @@ var j = 0
 
 			appendToX("wrapper-3", moduleThree);
 
-			j++;
+			i++;
 
-			if(j >= 500) {
-			
+			if(i >= 500) {
 			  newAnimation();
-			
 			  clearInterval(myAnimatingThree);
 			}
 		}
 		/*myAppendingFunctionThree END*/
 		var myAnimatingThree = setInterval (myAppendingFunctionThree, 1);
-
-		var lines = document.querySelectorAll(".modulethree");
-		console.log(lines); /* Can't select modulethree........ */
-
-
-	
-
-
-	// setTimeout(function(){
-
-	// if(lastAnimation){
-	//   newAnimation();
-	// }
-
-	// }, 700*i);
 
 	/*Reverse Animation END*/
 
