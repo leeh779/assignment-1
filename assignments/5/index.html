@@ -81,7 +81,7 @@
 			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_lf.png' ), side: THREE.DoubleSide } )
 		];
 
-		var cubeMaterial = new THREE.MeshBasicMaterial(cubeMaterials);
+		var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
 		var cube = new THREE.Mesh( geometry, cubeMaterial );
 		scene.add( cube );
 
