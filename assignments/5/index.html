@@ -9,9 +9,10 @@
 </head>
 <body>
 	<style>
-		body { margin: 0; background-color:black; }
+		body { margin: 0; background-color:black; cursor: pointer;}
 		canvas { width: 100%; height: 100%; }
 	</style>
+
 
 	<!------------------------------------------ 
 	* THIS PAGE NEEDS TO RUN ON A SERVER TO WORK 
@@ -34,20 +35,24 @@
 	  </p>
 	</main> -->
 
+	<div id="info-1" class="info"></div>
+	<div id="info-2" class="info"></div>
+	<div id="info-3" class="info"></div>
+	<div id="info-4" class="info"></div>
+
 	<!-- <div id="rocket"></div> -->
 	<script src="assets/three.js"></script>
+	<script src="assets/three.module.js"></script>
 	<script src="assets/OrbitControls.js"></script>
+	<!-- <script src="assets/TrackballControls.js"></script>
+	<script src="assets/CSS3DRenderer.js"></script> -->
 	<!-- <script src="assets/ObjectLoader.js"></script> -->
 	<!-- <script src="assets/AnaglyphEffect.js"></script> -->
 	<script type="text/javascript" src="assets/script.js"></script>
-	<script>
+	<script type="module">
 		// fps
-		(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()
+		// (function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//mrdoob.github.io/stats.js/build/stats.min.js';document.head.appendChild(script);})()
 
-
-		var scene = new THREE.Scene( );
-		var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
-	
 		var renderer = new THREE.WebGLRenderer( );
 		renderer.setSize( window.innerWidth, window.innerHeight );
 		document.body.appendChild( renderer.domElement );
@@ -62,43 +67,66 @@
 			camera.updateProjectionMatrix( );
 		} )
 
+		var scene = new THREE.Scene( );
+		var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
 		// //add anaglyph effect
 		// var effect = new THREE.AnaglyphEffect( renderer );
 		// effect.setSize( window.innerWidth, window.innerHeight );
 
 
+		var controls = new THREE.OrbitControls( camera, renderer.domElement );
+		camera.position.set( 5,5,5 );
+		controls.update();
 
-		controls = new THREE.OrbitControls( camera, renderer.domElement );
-
-		var geometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
+		var geometry = new THREE.BoxGeometry( 50, 50, 50 );
 		var cubeMaterials =
 		[
-			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_ft.png' ), side: THREE.DoubleSide } ),
-			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_bk.png' ), side: THREE.DoubleSide } ),
-			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_up.png' ), side: THREE.DoubleSide } ),
-			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_dn.png' ), side: THREE.DoubleSide } ),
-			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_rt.png' ), side: THREE.DoubleSide } ),
-			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_lf.png' ), side: THREE.DoubleSide } )
+			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/cwd_ft.JPG' ), side: THREE.DoubleSide } ),
+			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/cwd_bk.JPG' ), side: THREE.DoubleSide } ),
+			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/cwd_up.JPG' ), side: THREE.DoubleSide } ),
+			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/cwd_dn.JPG' ), side: THREE.DoubleSide } ),
+			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/cwd_rt.JPG' ), side: THREE.DoubleSide } ),
+			new THREE.MeshBasicMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/cwd_lf.JPG' ), side: THREE.DoubleSide } )
 		];
 
-		var cubeMaterial = new THREE.MeshFaceMaterial(cubeMaterials);
-		var cube = new THREE.Mesh( geometry, cubeMaterial );
+
+		// var cubeMaterial = new THREE.MeshBasicMaterial( cubeMaterials );
+		var cube = new THREE.Mesh( geometry, cubeMaterials );
 		scene.add( cube );
 
-		var ambientLight = new THREE.AmbientLight( 0xFFFFFF, 0.3 );
+		var ambientLight = new THREE.AmbientLight( 0xFFFFFF, 2 );
 		scene.add( ambientLight );
 
-		// // create the shape
-		// var geometry = new THREE.BoxGeometry( 2, 2, 2 );
-		// var cubeMaterials =
-		// 	[
-		// 	  new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_rt.png' ), side: THREE.DoubleSide } ), //RIGHT
-		// 	  new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_lf.png' ), side: THREE.DoubleSide } ), //LEFT
-		// 	  new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_up.png' ), side: THREE.DoubleSide } ), //TOP
-		// 	  new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_dn.png' ), side: THREE.DoubleSide } ), //BOTTOM
-		// 	  new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_ft.png' ), side: THREE.DoubleSide } ), //FRONT
-		// 	  new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_bk.png' ), side: THREE.DoubleSide } ) //BACK
-		// 	];
+
+		// var loader = new THREE.FontLoader();
+
+		// loader.load( 'assets/helvetiker_regular.typeface.json', function ( font ) {
+
+		// 	var geometry = new THREE.TextGeometry( 'Hello three.js!', {
+		// 		font: font,
+		// 		size: 80,
+		// 		height: 5,
+		// 		curveSegments: 12,
+		// 		bevelEnabled: true,
+		// 		bevelThickness: 10,
+		// 		bevelSize: 8,
+		// 		bevelOffset: 0,
+		// 		bevelSegments: 5
+		// 	} );
+		// } );
+
+
+		// //3d object load
+		// var loader = new THREE.ObjectLoader( );
+		// loader.load
+		// (
+		// 	'models/Head.json',
+		// 	function( object )
+		// 	{
+		// 		scene.add( object );
+		// 	}
+		// );
 
 		// // create a material, colour or image texture
 		// var material = new THREE.MeshFaceMaterial( cubeMaterials );
@@ -117,34 +145,6 @@
 		// );
 
 		// camera.position.z = 3;
-
-		// // Floor
-		// var floorGeometry = new THREE.CubeGeometry( 10, 1, 10);
-		// var floorMaterial = new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_rt.png' ), side: THREE.DoubleSide } );
-		// var floorCube = new THREE.Mesh( floorGeometry, floorMaterial );
-		// floorCube.position.y = -5;
-		// scene.add( floorCube );
-
-		// // Ceiling
-		// var ceilingGeometry = new THREE.CubeGeometry( 10, 1, 10 );
-		// var ceilingMaterial = new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_rt.png' ), side: THREE.DoubleSide } );
-		// var ceilingCube = new THREE.Mesh( ceilingGeometry, ceilingMaterial );
-		// ceilingCube.position.y = 5;
-		// scene.add( ceilingCube );
-
-		// // Left wall
-		// var leftWallGeometry = new THREE.CubeGeometry( 1, 10, 10 );
-		// var leftWallMaterial = new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_rt.png' ), side: THREE.DoubleSide } );
-		// var leftWallCube = new THREE.Mesh( leftWallGeometry, leftWallMaterial );
-		// leftWallCube.position.x = -5;
-		// scene.add( leftWallCube );
-
-		// // Right Wall
-		// var rightWallGeometry = new THREE.CubeGeometry( 1, 10, 10 );
-		// var rightWallMaterial = new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'assets/imgs/space_rt.png' ), side: THREE.DoubleSide } );
-		// var rightWallCube = new THREE.Mesh( rightWallGeometry, rightWallMaterial ); 
-		// rightWallCube.position.x = 5;
-		// scene.add( rightWallCube );
 
 
 		// var ambientLight = new THREE.AmbientLight( 0xFFFFFF, 1.5 );
@@ -171,34 +171,28 @@
 		//game logic
 		var update = function( )
 		{
-			// var time = Date.now( ) * 0.0005;
-			// light1.position.x = Math.sin( time * 0.7 ) * 30;
-			// light1.position.y = Math.cos( time * 0.5 ) * 40;
-			// light1.position.z = Math.cos( time * 0.3 ) * 30;
-
-			// light2.position.x = Math.cos( time * 0.3 ) * 30;
-			// light2.position.y = Math.sin( time * 0.5 ) * 40;
-			// light2.position.z = Math.sin( time * 0.7 ) * 30;
-
-			// light1.position.x = Math.sin( time * 0.7 ) * 30;
-			// light1.position.y = Math.cos( time * 0.3 ) * 40;
-			// light1.position.z = Math.sin( time * 0.5 ) * 30;
+			init();
 		};
+
 
 		// draw Scene
 		var render = function( )
 		{
 			renderer.render( scene, camera );
-			//effect.render( scene, camera ); This is for Anaglyph effect
+			// effect.render( scene, camera ); This is for Anaglyph effect
 		};
 
 		// run game loop (update, render, repeat);
 		var GameLoop = function( )
 		{
 			requestAnimationFrame( GameLoop );
-
-			update( );
+			// update( );
 			render( );
+
+			// required if controls.enableDamping or controls.autoRotate are set to true
+			controls.update();
+
+			renderer.render( scene, camera );
 		};
 
 		GameLoop( );

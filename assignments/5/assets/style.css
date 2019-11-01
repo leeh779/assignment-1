@@ -45,3 +45,56 @@
 .info-maintop-link:active {
 	color: #66ff00;
 }
+
+
+.info {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	z-index: 100;
+	display:block;
+
+	color: #fff;
+	font-family: source-code-pro, monospace;
+	font-weight: 300;
+	font-style: normal;
+
+	animation: letterSpacing 0.5s ease-in-out;
+}
+
+@keyframes letterSpacing {
+	0% {
+		letter-spacing: 150px;
+		bottom: -5%;
+	}
+
+	100% {
+		letter-spacing: 0;
+	}
+}
+
+
+#info-1 {
+	top: 15%;
+}
+
+
+#info-2 {
+	top: 20%;
+}
+
+#info-3 {
+	top: 25%;
+}
+
+
+#info-4 {
+	top: 30%;
+}
+
+
+
+
+
+
+
