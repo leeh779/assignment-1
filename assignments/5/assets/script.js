@@ -28,19 +28,19 @@ fetch('https://api.spacexdata.com/v3/launches/latest')
 	console.log("results: ", jsonResults)
 
 	document.getElementById("info-1").innerHTML = `
-	Flight_number: <span class="info-maintop-point">${jsonResults.flight_number}</span>
+	Flight_number: <span class="info-shake">${jsonResults.flight_number}</span>
 	`
 
 	document.getElementById("info-2").innerHTML = `
-	Mission_name: <span class="info-maintop-point">${jsonResults.mission_name}</span><br>
+	Mission_name: <span class="info-shake">${jsonResults.mission_name}</span><br>
 	`
 
 	document.getElementById("info-3").innerHTML = `
-	Rocket_name: <span class="info-maintop-point">${jsonResults.rocket.rocket_name}</span><br>
+	Rocket_name: <span class="info-shake">${jsonResults.rocket.rocket_name}</span><br>
 	`
 
 	document.getElementById("info-4").innerHTML = `
-	Launch_success: <span class="info-maintop-point"><a class="info-maintop-link" href="${jsonResults.links.video_link}">?????</a></span>
+	Launch_success: <span class="info-shake"><a class="info-maintop-link" href="${jsonResults.links.video_link}">?????</a></span>
 	`
 })
 .catch(function(error){
