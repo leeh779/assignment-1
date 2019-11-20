@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<link rel="stylesheet" href="https://use.typekit.net/fla4jpd.css">
+	<title>SpaceX Rockets</title>
+</head>
+<body>
+	<style>
+		body { margin: 0; overflow: hidden;}
+		canvas { width: 100%; height: 100%; }
+	</style>
+
+
+	<!------------------------------------------ 
+	* THIS PAGE NEEDS TO RUN ON A SERVER TO WORK 
+	* Options include:
+	*
+	* 0. cd (Move folders into Terminal)
+	*
+	* 1. to run locally, navigate to this directory in your terminal and enter: php -S 127.0.0.1:8000 (you can now find this page at 127.0.0.1:8000)
+	*
+	* 2. Or: install MAMP and navigate to this directory, visit the specified localhost 
+	*
+	* 3. Or: Build this website on glitch
+	*
+	* Once uploaded to github, this page will properly run
+	*
+	-------------------------------------------->
+
+	
+	<script src="assets/three.js"></script>
+	<script src="assets/three.module.js"></script>
+	<script src="assets/OrbitControls.js"></script>
+	<!-- <script src="assets/TrackballControls.js"></script>
+	<script src="assets/CSS3DRenderer.js"></script> -->
+	<!-- <script src="assets/ObjectLoader.js"></script> -->
+	<!-- <script src="assets/AnaglyphEffect.js"></script> -->
+	<script type="text/javascript" src="assets/script.js"></script>
+	<script type="module">
+
+		// SKYcube start
+		var renderer = new THREE.WebGLRenderer( );
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );
+
+		//Update Viewport on Resize
+		window.addEventListener( 'resize', function()
+		{
+			var width = window.innerWidth;
+			var height = window.innerHeight;
+			renderer.setSize( width, height );
+			camera.aspect = width / height;
+			camera.updateProjectionMatrix( );
+		} )
+
+		var scene = new THREE.Scene( );
+		var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+
+		var cameraTarget = new THREE.Vector3( 0, 150, 0 );
+
+		// //add anaglyph effect
+		// var effect = new THREE.AnaglyphEffect( renderer );
+		// effect.setSize( window.innerWidth, window.innerHeight );
+
+
+		var controls = new THREE.OrbitControls( camera, renderer.domElement );
+		camera.position.set( 1,1,1 );
+		controls.update();
+
+		var geometry  = new THREE.SphereGeometry(0.5, 100, 100)
+		var material  = new THREE.MeshPhongMaterial()
+		var earthMesh = new THREE.Mesh(geometry, material)
+		material.map  = THREE.ImageUtils.loadTexture('assets/imgs/world-map.svg')
+
+		// material.specularMap    = THREE.ImageUtils.loadTexture('assets/imgs/earthspec1k.jpg')
+		// material.specular  = new THREE.Color('grey')
+		
+		scene.add(earthMesh);
+		
+
+		var ambientLight = new THREE.AmbientLight( 0xFFFFFF, 0.2 );
+		scene.add( ambientLight );
+
+		var light1 = new THREE.PointLight( 0xFF0040, 4, 50 ); //color, intensity, distance
+		scene.add( light1 );
+
+		// var light2 = new THREE.PointLight( 0x0040FF, 2, 50 ); //color, intensity, distance
+		// // scene.add( light2 );
+
+		// var light3 = new THREE.PointLight( 0x80FF80, 4, 50 ); //color, intensity, distance
+		// // scene.add( light3 );
+
+		var directionalLight = new THREE.DirectionalLight( 0xFFFFFF, 1 );
+		directionalLight.position.set( 0, 1, 0); //x,y,z value
+		scene.add(directionalLight);
+
+		// var spotLight = new THREE.SpotLight ( 0xFF45F6, 25 );
+		// spotLight.position.set( 0, 3, 0 );
+		// scene.add(spotLight);
+
+
+		//game logic
+		var update = function( )
+		{
+			init();
+		};
+
+
+		// draw Scene
+		var render = function( )
+		{	
+			// font
+			// group.rotation.y += ( targetRotation - group.rotation.y ) * 0.05;
+			// camera.lookAt( cameraTarget );
+			// renderer.clear();
+
+			// general
+			renderer.render( scene, camera );
+			// effect.render( scene, camera ); This is for Anaglyph effect
+		};
+
+		// run game loop (update, render, repeat);
+		var GameLoop = function( )
+		{
+			requestAnimationFrame( GameLoop );
+			// update( );
+			render( );
+
+			// required if controls.enableDamping or controls.autoRotate are set to true
+			controls.update();
+			renderer.render( scene, camera );
+		};
+
+		GameLoop( );
+
+		function animate() {
+		}
+	</script>
+
+</body>
+</html>

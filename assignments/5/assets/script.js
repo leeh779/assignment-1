@@ -27,9 +27,9 @@ fetch('https://api.spacexdata.com/v3/launches/latest')
 
 	console.log("results: ", jsonResults)
 
-	document.getElementById("launch-vid").innerHTML = `
-		<iframe class="launch-vid-child" width="640" height="480" src="https://www.youtube.com/embed/${jsonResults.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	`
+	// document.getElementById("launch-vid").innerHTML = `
+	// 	<iframe class="launch-vid-child" width="640" height="480" src="https://www.youtube.com/embed/${jsonResults.links.youtube_id}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	// `
 
 	document.getElementById("info-1").innerHTML = `
 	Flight_number: <span class="info-shake">${jsonResults.flight_number}</span>
