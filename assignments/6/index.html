@@ -29,7 +29,8 @@
 	* Once uploaded to github, this page will properly run
 	*
 	-------------------------------------------->
-
+	<div id="title">Bucketlist</div>
+	<canvas id="canvas" style="cursor:crosshair;background:#ffffff"></canvas>
 	
 	<script src="assets/three.js"></script>
 	<script src="assets/three.module.js"></script>
@@ -71,16 +72,40 @@
 		camera.position.set( 1,1,1 );
 		controls.update();
 
-		var geometry  = new THREE.SphereGeometry(0.5, 100, 100)
+		var geometry  = new THREE.SphereGeometry(1, 32, 32)
 		var material  = new THREE.MeshPhongMaterial()
 		var earthMesh = new THREE.Mesh(geometry, material)
-		material.map  = THREE.ImageUtils.loadTexture('assets/imgs/world-map.svg')
+		material.map  = THREE.ImageUtils.loadTexture('assets/imgs/earth-surface.jpg')
 
 		// material.specularMap    = THREE.ImageUtils.loadTexture('assets/imgs/earthspec1k.jpg')
 		// material.specular  = new THREE.Color('grey')
+
+
+		function getTexture( path ){
+		var map = planet.textureLoader.load( path );// PlanetData.textures_path + "contour1_1.png"
+	    map.generateMipalphaMaps = false;
+	    map.magFilter = THREE.LinearFilter;
+	    map.minFilter = THREE.LinearFilter;
+	    return map;
+		}
+
 		
 		scene.add(earthMesh);
 		
+
+
+		//STAR
+
+		// create the geometry sphere
+		var geometry  = new THREE.SphereGeometry(90, 32, 32)
+		// create the material, using a texture of startfield
+		var material  = new THREE.MeshBasicMaterial()
+		material.map   = THREE.ImageUtils.loadTexture('assets/imgs/galaxy_starfield.png')
+		material.side  = THREE.BackSide
+		// create the mesh based on geometry and material
+		var mesh  = new THREE.Mesh(geometry, material)
+
+
 
 		var ambientLight = new THREE.AmbientLight( 0xFFFFFF, 0.2 );
 		scene.add( ambientLight );
@@ -88,8 +113,8 @@
 		var light1 = new THREE.PointLight( 0xFF0040, 4, 50 ); //color, intensity, distance
 		scene.add( light1 );
 
-		// var light2 = new THREE.PointLight( 0x0040FF, 2, 50 ); //color, intensity, distance
-		// // scene.add( light2 );
+		var light2 = new THREE.PointLight( 0x0040FF, 2, 50 ); //color, intensity, distance
+		scene.add( light2 );
 
 		// var light3 = new THREE.PointLight( 0x80FF80, 4, 50 ); //color, intensity, distance
 		// // scene.add( light3 );

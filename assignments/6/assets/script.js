@@ -1,38 +1,32 @@
-fetch('/assets/my.json')
-.then(function(results){
-	// console.log("first results:", results)
-	return results.json()//convert the results into something we can use.
-})
-.then(function(jsonResults){
-
-	//console.log("results: ", jsonResults)
-	// document.querySelector("#root").insertAdjacentHTML('afterbegin', 
-	// 	`
-	// 	<h1 style="color:${jsonResults.colors.listofColors[1]};">${jsonResults.title}</h1> 
-	// 	`
-	// )
-
-})
-.catch(function(error){
-	console.log("error message:", error)
-})
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("canvas").addEventListener('click',function(e){
+     getPosition(e);
+     //validation code to see State field is mandatory.  
+    }  ); 
+});
 
 
-//SpaceX
-fetch('https://api.spacexdata.com/v3/launches/latest')
-.then(function(results){
-	return results.json()
-})
-.then(function(jsonResults){
+document.getElementById("canvas").click(function(e){
+     getPosition(e); 
+});
 
-	console.log("results: ", jsonResults)
+var pointSize = 3;
 
-	// document.getElementById("info-1").innerHTML = `
-	// Flight_number: <span class="info-shake">${jsonResults.flight_number}</span>
-	// `
+function getPosition(event){
+     var rect = canvas.getBoundingClientRect();
+     var x = event.clientX - rect.left;
+     var y = event.clientY - rect.top;
+        
+     drawCoordinates(x,y);
+}
+
+function drawCoordinates(x,y){	
+  	var ctx = document.getElementById("canvas").getContext("2d");
 
 
-})
-.catch(function(error){
-	console.log("error message:", error)
-})
+  	ctx.fillStyle = "#ff2626"; // Red color
+
+    ctx.beginPath();
+    ctx.arc(x, y, pointSize, 0, Math.PI * 2, true);
+    ctx.fill();
+}
