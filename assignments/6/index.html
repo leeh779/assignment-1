@@ -5,15 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
 	<link rel="stylesheet" href="https://use.typekit.net/fla4jpd.css">
-	<title>SpaceX Rockets</title>
+	<title>Bucketlist</title>
 </head>
 <body>
 	<style>
 		body { margin: 0; overflow: hidden;}
-		canvas { width: 100%; height: 100%; }
+		canvas { width: 100vw; height: 200px; }
 	</style>
-
-
 	<!------------------------------------------ 
 	* THIS PAGE NEEDS TO RUN ON A SERVER TO WORK 
 	* Options include:
@@ -35,14 +33,8 @@
 	<script src="assets/three.js"></script>
 	<script src="assets/three.module.js"></script>
 	<script src="assets/OrbitControls.js"></script>
-	<!-- <script src="assets/TrackballControls.js"></script>
-	<script src="assets/CSS3DRenderer.js"></script> -->
-	<!-- <script src="assets/ObjectLoader.js"></script> -->
-	<!-- <script src="assets/AnaglyphEffect.js"></script> -->
 	<script type="text/javascript" src="assets/script.js"></script>
 	<script type="module">
-
-		// SKYcube start
 		var renderer = new THREE.WebGLRenderer( );
 		renderer.setSize( window.innerWidth, window.innerHeight );
 		document.body.appendChild( renderer.domElement );
@@ -77,34 +69,26 @@
 		var earthMesh = new THREE.Mesh(geometry, material)
 		material.map  = THREE.ImageUtils.loadTexture('assets/imgs/earth-surface.jpg')
 
-		// material.specularMap    = THREE.ImageUtils.loadTexture('assets/imgs/earthspec1k.jpg')
-		// material.specular  = new THREE.Color('grey')
-
-
-		function getTexture( path ){
-		var map = planet.textureLoader.load( path );// PlanetData.textures_path + "contour1_1.png"
-	    map.generateMipalphaMaps = false;
-	    map.magFilter = THREE.LinearFilter;
-	    map.minFilter = THREE.LinearFilter;
-	    return map;
-		}
-
+		// material.specularMap = THREE.ImageUtils.loadTexture('assets/imgs/earthspec1k.jpg')
+		// material.specular = new THREE.Color('grey')
 		
 		scene.add(earthMesh);
 		
 
 
-		//STAR
-
 		// create the geometry sphere
 		var geometry  = new THREE.SphereGeometry(90, 32, 32)
 		// create the material, using a texture of startfield
 		var material  = new THREE.MeshBasicMaterial()
-		material.map   = THREE.ImageUtils.loadTexture('assets/imgs/galaxy_starfield.png')
-		material.side  = THREE.BackSide
+		material.map  = THREE.ImageUtils.loadTexture('assets/imgs/galaxy_starfield.png')
+		material.side = THREE.BackSide
 		// create the mesh based on geometry and material
-		var mesh  = new THREE.Mesh(geometry, material)
+		var mesh = new THREE.Mesh(geometry, material)
 
+
+		// // draw dots
+		// var label = 
+		// label.position.set( sphere.position.add( new THREE.Vector3(3,4,5) ) );
 
 
 		var ambientLight = new THREE.AmbientLight( 0xFFFFFF, 0.2 );
