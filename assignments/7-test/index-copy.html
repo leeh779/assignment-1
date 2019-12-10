@@ -34,35 +34,70 @@
 			function generatePointCloudGeometry( color, width, length ) {
 				var geometry = new THREE.BufferGeometry();
 				var numPoints = width * length;
-				var positions = new Float32Array( numPoints );
-				var colors = new Float32Array( numPoints );
-				var k = 0;
-				for ( var i = 0; i < width; i ++ ) {
-					for ( var j = 0; j < length; j ++ ) {
-						var u = i / width;
-						var v = j / length;
-						// var x = u - 0.5;
-						// var y = ( Math.cos( u * Math.PI * 4 ) + Math.sin( v * Math.PI * 8 ) ) / 20;
-						// var z = v - 0.5;
+				var positions = new Float32Array( numPoints * 3 );
+				var colors = new Float32Array( numPoints * 3 );
+				// var k = 0;
+				// for ( var i = 0; i < width; i ++ ) {
+				// 	for ( var j = 0; j < length; j ++ ) {
+				// 		var u = i / width;
+				// 		var v = j / length;
+				// 		var x = u - 0.5;
+				// 		var y = ( Math.cos( u * Math.PI * 4 ) + Math.sin( v * Math.PI * 8 ) ) / 20;
+				// 		var z = v - 0.5;
+				// 		positions[ 3 * k ] = x;
+				// 		positions[ 3 * k + 1 ] = y;
+				// 		positions[ 3 * k + 2 ] = z;
+				// 		var intensity = ( y + 0.1 ) * 5;
+				// 		colors[ 3 * k ] = color.r * intensity;
+				// 		colors[ 3 * k + 1 ] = color.g * intensity;
+				// 		colors[ 3 * k + 2 ] = color.b * intensity;
+				// 		k ++;
+				// 	}
+				// }
 
-						var angle = i*Math.PI*2;
-						console.log(angle)
-						var radius = 8;
-						var x = Math.cos(angle)*radius;
-						var y = Math.sin(angle)*radius;
-						// var x = u - 0.5;
-						// var y = ( Math.cos( u * Math.PI * 4 ) + Math.sin( v * Math.PI * 8 ) ) / 20;
-						var z = 0;
-						positions[ 3 * k ] = x;
-						positions[ 3 * k + 1 ] = y;
-						positions[ 3 * k + 2 ] = z;
-						var intensity = ( y + 0.1 ) * 5;
-						colors[ 3 * k ] = color.r * intensity;
-						colors[ 3 * k + 1 ] = color.g * intensity;
-						colors[ 3 * k + 2 ] = color.b * intensity;
-						k ++;
-					}
+
+				//sphere
+				for ( var i = 1, l = width; i <= l; i ++ ) {
+					var phi = Math.acos( - 1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+					vector.setFromSphericalCoords( radius, phi, theta );
+					geometry.copy( heartGeometry );
+					geometry.lookAt( vector );
+					geometry.translate( vector.x, vector.y, vector.z );
+					color.setHSL( ( i / l ), 1.0, 0.7 );
+					geometry.faces.forEach( function ( face ) {
+						positions.push( geometry.vertices[ face.a ].x );
+						positions.push( geometry.vertices[ face.a ].y );
+						positions.push( geometry.vertices[ face.a ].z );
+						positions.push( geometry.vertices[ face.b ].x );
+						positions.push( geometry.vertices[ face.b ].y );
+						positions.push( geometry.vertices[ face.b ].z );
+						positions.push( geometry.vertices[ face.c ].x );
+						positions.push( geometry.vertices[ face.c ].y );
+						positions.push( geometry.vertices[ face.c ].z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+					} );
 				}
+
+
+
 				geometry.setAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
 				geometry.setAttribute( 'color', new THREE.BufferAttribute( colors, 3 ) );
 				geometry.computeBoundingBox();
@@ -76,6 +111,9 @@
 
 				// function createGeometry() {
 				// 	var heartShape = new THREE.Shape(); // From http://blog.burlock.org/html5/130-paths
+				// option 1: switch to spheres
+				// option 2: convert heart geometry into circle and remove extrusion depth
+
 				// 	var x = 0, y = 0;
 				// 	heartShape.moveTo( x + 25, y + 25 );
 				// 	heartShape.bezierCurveTo( x + 25, y + 25, x + 20, y, x, y );
@@ -211,6 +249,15 @@
 					scene.add( sphere );
 					spheres.push( sphere );
 				}
+
+				/*
+
+					var sphereGeometry = new THREE.SphereBufferGeometry( 0.1, 32, 32 );
+					var sphereMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+					var sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
+
+				*/
+
 				//
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );

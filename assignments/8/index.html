@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - buffer geometry constructed from geometry</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<script type="module">
+			import * as THREE from '/assets/three.module.js';
+			import Stats from '/assets/stats.module.js';
+			import { TrackballControls } from '/assets/controls/TrackballControls.js';
+			var camera, scene, renderer, controls, stats;
+			init();
+			animate();
+			function init() {
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				scene = new THREE.Scene();
+				camera = new THREE.PerspectiveCamera( 45.0, window.innerWidth / window.innerHeight, 0.1, 1500.0 );
+				// camera.position.z = 480.0;
+				camera.position.set( 1,1,1 );
+				scene.add( camera );
+				controls = new TrackballControls( camera, renderer.domElement );
+				controls.minDistance = 100.0;
+				controls.maxDistance = 800.0;
+				controls.dynamicDampingFactor = 0.1;
+				scene.add( new THREE.AmbientLight( 0xffffff, 0.2 ) );
+				var light = new THREE.PointLight( 0xffffff, 0.7 );
+				camera.add( light );
+				createScene();
+				stats = new Stats();
+				document.body.appendChild( stats.dom );
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			// create the Earth
+			// Should be the same size with sphereShape.
+			var geometry  = new THREE.SphereGeometry(29, 32, 32);
+			var material  = new THREE.MeshBasicMaterial();
+			// material.color = new THREE.Color ( 0x31b477 );
+			// material.transparent = true;
+			// material.blending = THREE.AdditiveBlending;
+			var earthMesh = new THREE.Mesh(geometry, material)
+			material.map  = THREE.ImageUtils.loadTexture('assets/imgs/earth-surface.png')
+			
+			scene.add(earthMesh);
+			
+
+
+
+			function createGeometry() {
+				// option 2: convert heart geometry into circle and remove extrusion depth
+				var sphereShape = new THREE.Shape();
+				var x = 0, y = 0;
+				sphereShape.ellipse ( 0, 0, x + 1, y + 1, 0, 270, false, 0 )
+
+				var extrudeSettings = {
+					depth: 1,
+					bevelEnabled: false,
+					// bevelSegments: 1,
+					// steps: 2,
+					// bevelSize: 1,
+					// bevelThickness: 1
+				};
+
+				var geometry = new THREE.ExtrudeGeometry( sphereShape, extrudeSettings );
+				geometry.rotateX( Math.PI );
+				geometry.scale( 0.3, 0.3, 0.3 );
+				return geometry;
+			}
+			function createScene() {
+				var bufferGeometry = new THREE.BufferGeometry();
+				var radius = 30;
+				var count = 300;
+				var positions = [];
+				var normals = [];
+				var colors = [];
+				var vector = new THREE.Vector3();
+				var color = new THREE.Color( 0xffffff );
+				var heartGeometry = createGeometry();
+				var geometry = new THREE.Geometry();
+				//
+
+				var runOneDot = function(i){
+					
+					var l = count;
+					var phi = Math.acos( - 1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+					vector.setFromSphericalCoords( radius, phi, theta );
+					geometry.copy( heartGeometry );
+					geometry.lookAt( vector );
+					geometry.translate( vector.x, vector.y, vector.z );
+					// color.setHSL( ( i / l ), 1.0, 0.7 );
+					// Sandstone: color.setHSL( 15, 17, 59 );
+					color.setHSL( 14, .80, .66 );
+
+					// console.log(geometry.faces[0])
+
+					console.log(geometry)
+
+					geometry.faces.forEach( function ( face ) {
+						console.log(face)
+						positions.push( geometry.vertices[ face.a ].x );
+						positions.push( geometry.vertices[ face.a ].y );
+						positions.push( geometry.vertices[ face.a ].z );
+						positions.push( geometry.vertices[ face.b ].x );
+						positions.push( geometry.vertices[ face.b ].y );
+						positions.push( geometry.vertices[ face.b ].z );
+						positions.push( geometry.vertices[ face.c ].x );
+						positions.push( geometry.vertices[ face.c ].y );
+						positions.push( geometry.vertices[ face.c ].z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+				})
+			}
+
+			runOneDot(64); //Sydney
+			runOneDot(98.9); //Madagascar
+			runOneDot(54.4); //Santiago
+			runOneDot(251.3); //New York
+			runOneDot(230); //Los Angeles
+			runOneDot(237.4);  //Tokyo
+			runOneDot(268); //London
+			runOneDot(267.5); //Berlin
+			runOneDot(267.7); //Amsterdam
+
+
+				//
+
+				// for ( var i = 1, l = count; i <= l; i ++ ) {
+				// 	var phi = Math.acos( - 1 + ( 2 * i ) / l );
+				// 	var theta = Math.sqrt( l * Math.PI ) * phi;
+				// 	vector.setFromSphericalCoords( radius, phi, theta );
+				// 	geometry.copy( heartGeometry );
+				// 	geometry.lookAt( vector );
+				// 	geometry.translate( vector.x, vector.y, vector.z );
+				// 	// color.setHSL( ( i / l ), 1.0, 0.7 );
+				// 	// Sandstone: color.setHSL( 15, 17, 59 );
+
+				// 	console.log(geometry.faces)
+
+				// 	geometry.faces.forEach( function ( face ) {
+				// 		positions.push( geometry.vertices[ face.a ].x );
+				// 		positions.push( geometry.vertices[ face.a ].y );
+				// 		positions.push( geometry.vertices[ face.a ].z );
+				// 		positions.push( geometry.vertices[ face.b ].x );
+				// 		positions.push( geometry.vertices[ face.b ].y );
+				// 		positions.push( geometry.vertices[ face.b ].z );
+				// 		positions.push( geometry.vertices[ face.c ].x );
+				// 		positions.push( geometry.vertices[ face.c ].y );
+				// 		positions.push( geometry.vertices[ face.c ].z );
+				// 		normals.push( face.normal.x );
+				// 		normals.push( face.normal.y );
+				// 		normals.push( face.normal.z );
+				// 		normals.push( face.normal.x );
+				// 		normals.push( face.normal.y );
+				// 		normals.push( face.normal.z );
+				// 		normals.push( face.normal.x );
+				// 		normals.push( face.normal.y );
+				// 		normals.push( face.normal.z );
+				// 		colors.push( color.r );
+				// 		colors.push( color.g );
+				// 		colors.push( color.b );
+				// 		colors.push( color.r );
+				// 		colors.push( color.g );
+				// 		colors.push( color.b );
+				// 		colors.push( color.r );
+				// 		colors.push( color.g );
+				// 		colors.push( color.b );
+
+				// 		addEventListener('click', function(){
+				// 			color = color.setHSL( ( i / l ), 1.0, 0.7 );
+				// 		});
+
+				// 	} );
+
+				// 	// onClick Color change
+
+				// 	// option1 - function
+				// 	// geometry.faces.forEach( function () {
+				// 	// 	color = color.setHSL( ( i / l ), 1.0, 0.7 );
+				// 	// }	);
+
+				// 	// option2 - eventlistener
+				// 	// geometry.faces.forEach.addEventListener('click', function(){
+				// 	// 	color = color.setHSL( ( i / l ), 1.0, 0.7 );
+				// 	// }
+				// 	// 	);
+
+				// }
+
+
+				bufferGeometry.setAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
+				bufferGeometry.setAttribute( 'normal', new THREE.Float32BufferAttribute( normals, 3 ) );
+				bufferGeometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
+				var material = new THREE.MeshPhongMaterial( { shininess: 1, vertexColors: THREE.VertexColors } );
+				var mesh = new THREE.Mesh( bufferGeometry, material );
+				scene.add( mesh );
+			}
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+			}
+			function animate() {
+				requestAnimationFrame( animate );
+				controls.update();
+				stats.update();
+				renderer.render( scene, camera );
+			}
+
+
+			//Local Storage
+			// var saveUserInfo = function(){
+			// 	if (!storageAvailable('localStorage')){ return; } // if we can use localStorage, don't return
+
+				
+			// 	if(localStorage.getItem('color')){
+			// 		// if color has been saved: 
+			// 		var color = localStorage.getItem('color');
+
+			// 		// apply color to element: 
+			// 		document.getElementById("myDiv").style.color = color;
+
+			// 	}
+
+
+			// 	document.getElementById("myDiv").addEventListener('click', function(){
+			// 		// when a user clicks on myDiv, produce a random color to save:
+
+			// 		var red = Math.round(Math.random()*255);
+			// 		var green = Math.round(Math.random()*255);
+			// 		var blue = Math.round(Math.random()*255);
+
+			// 		var newColor = "rgb(" + red + "," + green + "," + blue + ")";
+
+			// 		localStorage.setItem('color', newColor); // save new color
+
+			// 		// set new color to item:
+			// 		document.getElementById("myDiv").style.color = newColor;
+
+			// 	})
+
+
+			// }
+
+
+			// saveUserInfo(); // run saveing user info
+
+		</script>
+	</body>
+</html>
