@@ -1,7 +1,7 @@
   
 body {
 	margin: 0;
-	background-color: #000;
+	background-color: #d5cdc6;
 	color: #fff;
 	font-family: Monospace;
 	font-size: 13px;
@@ -25,6 +25,7 @@ button {
 
 canvas {
 	display: block;
+	background: #d5cdc6;
 }
 
 #info {

@@ -15,30 +15,13 @@
 			init();
 			animate();
 
-			//TEXT
-			var loader = new THREE.FontLoader();
-			loader.load( 'assets/gentilis_regular.typeface.json', function ( font ) {
-
-				var cityArray = [ "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
-
-				var textGeo = new THREE.TextGeometry ( cityArray[0], {
-					font: font,
-					size: 2,
-					height: 0.1,
-					bevelEnabled: false
-				});
-				var textMaterial = new THREE.MeshPhongMaterial( {color:0xffffff} );
-				var mesh = new THREE.Mesh( textGeo, textMaterial );
-				mesh.position.set( 30, 8, 20 );
-				scene.add( mesh );
-			});
-
 			function init() {
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				document.body.appendChild( renderer.domElement );
 				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0xeee1ab );
 				camera = new THREE.PerspectiveCamera( 45.0, window.innerWidth / window.innerHeight, 0.1, 1500.0 );
 				// camera.position.z = 480.0;
 				camera.position.set( 1,1,1 );
@@ -198,6 +181,28 @@
 			runOneDot(267.7); //Amsterdam
 
 
+
+			//Loading texts
+			//TEXT
+			var loader = new THREE.FontLoader();
+			loader.load( 'assets/gentilis_regular.typeface.json', function ( font ) {
+
+				var cityArray = [ "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
+
+				var textGeo = new THREE.TextGeometry ( cityArray[0], {
+					font: font,
+					size: 2,
+					height: 0.1,
+					bevelEnabled: false
+				});
+				var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
+				var mesh = new THREE.Mesh( textGeo, textMaterial );
+				mesh.position.set( 21, -10, -20 );
+				scene.add( mesh );
+			});
+
+			
+			//Position the texts of city names depending on the position of circle marks
 			var runOneText = function(i){
 					
 					var l = count;
@@ -207,11 +212,6 @@
 					geometry.copy( heartGeometry );
 					geometry.lookAt( vector );
 					geometry.translate( vector.x, vector.y, vector.z );
-					// color.setHSL( ( i / l ), 1.0, 0.7 );
-					// Sandstone: color.setHSL( 15, 17, 59 );
-					color.setHSL( 14, .80, .66 );
-
-					console.log(geometry)
 
 					geometry.faces.forEach( function ( face ) {
 						console.log(face)
@@ -255,6 +255,8 @@
 				var mesh = new THREE.Mesh( bufferGeometry, material );
 				scene.add( mesh );
 			}
+
+
 			function onWindowResize() {
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
