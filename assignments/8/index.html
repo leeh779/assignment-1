@@ -14,6 +14,25 @@
 			var camera, scene, renderer, controls, stats;
 			init();
 			animate();
+
+			//TEXT
+			var loader = new THREE.FontLoader();
+			loader.load( 'assets/gentilis_regular.typeface.json', function ( font ) {
+
+				var cityArray = [ "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
+
+				var textGeo = new THREE.TextGeometry ( cityArray[0], {
+					font: font,
+					size: 2,
+					height: 0.1,
+					bevelEnabled: false
+				});
+				var textMaterial = new THREE.MeshPhongMaterial( {color:0xffffff} );
+				var mesh = new THREE.Mesh( textGeo, textMaterial );
+				mesh.position.set( 30, 8, 20 );
+				scene.add( mesh );
+			});
+
 			function init() {
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
 				renderer.setPixelRatio( window.devicePixelRatio );
@@ -99,6 +118,37 @@
 					// Sandstone: color.setHSL( 15, 17, 59 );
 					color.setHSL( 14, .80, .66 );
 
+					//Color for localstorage
+					// RETRIEVE AND UPDATE VARIABLE:
+					// if(localstorage.getItem('hslColor')){
+					// // if we've saved the color use it
+
+					// 	var hslColor = localstorage.getItem('hslColor');
+					// 	// local storage saves strings, so any number or array we need to convert
+					// 	hslColor = JSON.parse(hslColor); // convert string into readable array
+					// 	color.setHSL(hslColor[0], hslColor[1], hslColor[2]);
+
+					// }else{// use the default
+
+					// 	var hslColors = [0, 0, .89]; //gray color
+					// 	color.setHSL(hslColors[0], hslColors[1], hslColors[2]);
+					// }
+
+
+
+					// // SAVE VARIABLE: (happen on click or based off of time, etc)
+					// var newHslColor = [14, .80, .66];
+					// 	// update the actual color that's being seen
+
+					// 	// update the local storage item:
+					// 	// convert hsl array into string:
+					// newHslColor = JSON.stringify(newHslColor); // "[1.5, 2.5, 3.5]"
+					// // "this is a string"
+
+					// localstorage.setItem('hslColor', newHslColor);
+					//Color for localstorage END.
+
+
 					// console.log(geometry.faces[0])
 
 					console.log(geometry)
@@ -136,6 +186,8 @@
 			}
 
 			runOneDot(64); //Sydney
+			// if (i = 64) { color.setHSL(0, 0, .75); }
+
 			runOneDot(98.9); //Madagascar
 			runOneDot(54.4); //Santiago
 			runOneDot(251.3); //New York
@@ -146,69 +198,54 @@
 			runOneDot(267.7); //Amsterdam
 
 
-				//
+			var runOneText = function(i){
+					
+					var l = count;
+					var phi = Math.acos( - 1 + ( 2 * i ) / l );
+					var theta = Math.sqrt( l * Math.PI ) * phi;
+					vector.setFromSphericalCoords( radius, phi, theta );
+					geometry.copy( heartGeometry );
+					geometry.lookAt( vector );
+					geometry.translate( vector.x, vector.y, vector.z );
+					// color.setHSL( ( i / l ), 1.0, 0.7 );
+					// Sandstone: color.setHSL( 15, 17, 59 );
+					color.setHSL( 14, .80, .66 );
 
-				// for ( var i = 1, l = count; i <= l; i ++ ) {
-				// 	var phi = Math.acos( - 1 + ( 2 * i ) / l );
-				// 	var theta = Math.sqrt( l * Math.PI ) * phi;
-				// 	vector.setFromSphericalCoords( radius, phi, theta );
-				// 	geometry.copy( heartGeometry );
-				// 	geometry.lookAt( vector );
-				// 	geometry.translate( vector.x, vector.y, vector.z );
-				// 	// color.setHSL( ( i / l ), 1.0, 0.7 );
-				// 	// Sandstone: color.setHSL( 15, 17, 59 );
+					console.log(geometry)
 
-				// 	console.log(geometry.faces)
+					geometry.faces.forEach( function ( face ) {
+						console.log(face)
+						positions.push( geometry.vertices[ face.a ].x );
+						positions.push( geometry.vertices[ face.a ].y );
+						positions.push( geometry.vertices[ face.a ].z );
+						positions.push( geometry.vertices[ face.b ].x );
+						positions.push( geometry.vertices[ face.b ].y );
+						positions.push( geometry.vertices[ face.b ].z );
+						positions.push( geometry.vertices[ face.c ].x );
+						positions.push( geometry.vertices[ face.c ].y );
+						positions.push( geometry.vertices[ face.c ].z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						normals.push( face.normal.x );
+						normals.push( face.normal.y );
+						normals.push( face.normal.z );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+						colors.push( color.r );
+						colors.push( color.g );
+						colors.push( color.b );
+				})
+			}
 
-				// 	geometry.faces.forEach( function ( face ) {
-				// 		positions.push( geometry.vertices[ face.a ].x );
-				// 		positions.push( geometry.vertices[ face.a ].y );
-				// 		positions.push( geometry.vertices[ face.a ].z );
-				// 		positions.push( geometry.vertices[ face.b ].x );
-				// 		positions.push( geometry.vertices[ face.b ].y );
-				// 		positions.push( geometry.vertices[ face.b ].z );
-				// 		positions.push( geometry.vertices[ face.c ].x );
-				// 		positions.push( geometry.vertices[ face.c ].y );
-				// 		positions.push( geometry.vertices[ face.c ].z );
-				// 		normals.push( face.normal.x );
-				// 		normals.push( face.normal.y );
-				// 		normals.push( face.normal.z );
-				// 		normals.push( face.normal.x );
-				// 		normals.push( face.normal.y );
-				// 		normals.push( face.normal.z );
-				// 		normals.push( face.normal.x );
-				// 		normals.push( face.normal.y );
-				// 		normals.push( face.normal.z );
-				// 		colors.push( color.r );
-				// 		colors.push( color.g );
-				// 		colors.push( color.b );
-				// 		colors.push( color.r );
-				// 		colors.push( color.g );
-				// 		colors.push( color.b );
-				// 		colors.push( color.r );
-				// 		colors.push( color.g );
-				// 		colors.push( color.b );
 
-				// 		addEventListener('click', function(){
-				// 			color = color.setHSL( ( i / l ), 1.0, 0.7 );
-				// 		});
-
-				// 	} );
-
-				// 	// onClick Color change
-
-				// 	// option1 - function
-				// 	// geometry.faces.forEach( function () {
-				// 	// 	color = color.setHSL( ( i / l ), 1.0, 0.7 );
-				// 	// }	);
-
-				// 	// option2 - eventlistener
-				// 	// geometry.faces.forEach.addEventListener('click', function(){
-				// 	// 	color = color.setHSL( ( i / l ), 1.0, 0.7 );
-				// 	// }
-				// 	// 	);
-
-				// }
 
 
 				bufferGeometry.setAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
@@ -230,43 +267,6 @@
 				renderer.render( scene, camera );
 			}
 
-
-			//Local Storage
-			// var saveUserInfo = function(){
-			// 	if (!storageAvailable('localStorage')){ return; } // if we can use localStorage, don't return
-
-				
-			// 	if(localStorage.getItem('color')){
-			// 		// if color has been saved: 
-			// 		var color = localStorage.getItem('color');
-
-			// 		// apply color to element: 
-			// 		document.getElementById("myDiv").style.color = color;
-
-			// 	}
-
-
-			// 	document.getElementById("myDiv").addEventListener('click', function(){
-			// 		// when a user clicks on myDiv, produce a random color to save:
-
-			// 		var red = Math.round(Math.random()*255);
-			// 		var green = Math.round(Math.random()*255);
-			// 		var blue = Math.round(Math.random()*255);
-
-			// 		var newColor = "rgb(" + red + "," + green + "," + blue + ")";
-
-			// 		localStorage.setItem('color', newColor); // save new color
-
-			// 		// set new color to item:
-			// 		document.getElementById("myDiv").style.color = newColor;
-
-			// 	})
-
-
-			// }
-
-
-			// saveUserInfo(); // run saveing user info
 
 		</script>
 	</body>
