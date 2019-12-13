@@ -7,6 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="main.css">
 	</head>
 	<body>
+		<div class="title">Travel<br>Bucket List Map</div>
 		<script type="module">
 			import * as THREE from '/assets/three.module.js';
 			import Stats from '/assets/stats.module.js';
@@ -207,94 +208,84 @@
 			runOneDot(230); //Los Angeles
 			runOneDot(237.4);  //Tokyo
 			runOneDot(268); //London
-			runOneDot(267.5); //Berlin
-			runOneDot(267.7); //Amsterdam
+			// runOneDot(267.5); //Berlin
+			// runOneDot(267.7); //Amsterdam
 
 
-			//Loading texts
-			//TEXT
+			//Option1: Manually positioning texts
+			var loader = new THREE.FontLoader();
+			loader.load( 'assets/gentilis_regular.typeface.json', function ( font ) {
+				function addLabel( name, location ) {
+					var textGeo = new THREE.TextBufferGeometry( name, {
+						font: font,
+						size: 2,
+						height: 0.1,
+						bevelEnabled: false
+					} );
+					var textMaterial = new THREE.MeshBasicMaterial( { color: 0x332819 } );
+					var mesh = new THREE.Mesh( textGeo, textMaterial );
+					mesh.position.copy( location );
+					scene.add( mesh );
+				}
+
+				addLabel( "Madagascar", new THREE.Vector3( 21, -10, -20 ) );
+				addLabel( "Sydney", new THREE.Vector3( -30, -19, -12 ) );
+				addLabel( "Santiago", new THREE.Vector3( 5, -21, 21 ) );
+				addLabel( "New York", new THREE.Vector3( 4, 20, 22 ) );
+				addLabel( "Los Angeles", new THREE.Vector3( -21, 17, 22 ) );
+				addLabel( "Tokyo", new THREE.Vector3( -25, 15, -18 ) );
+				addLabel( "London", new THREE.Vector3( 18, 24, 0 ) );
+			} );
+
+
+		
+			
+			//Option2: FOR LOOP for repeating city Array
+			//  Position the texts of city names depending on the position of circle marks
+			// var runOneText = function(i, mesh){
+					
+			// 		var l = count;
+			// 		var phi = Math.acos( - 1 + ( 2 * i ) / l );
+			// 		var theta = Math.sqrt( l * Math.PI ) * phi;
+			// 		vector.setFromSphericalCoords( radius, phi, theta );
+			// 		// geometry.copy( mesh );
+			// 		// geometry.lookAt( vector );
+			// 		// geometry.translate( vector.x, vector.y, vector.z );
+			// 		color.setHSL( ( i / l ), 1.0, 0.7 );
+			// 		mesh.position.set( vector.x, vector.y, vector.z );
+			// 		mesh.rotation.z = Math.PI / 2;
+			// 		scene.add( mesh );
+			// }
+
 			// var loader = new THREE.FontLoader();
 			// loader.load( 'assets/gentilis_regular.typeface.json', function ( font ) {
 
-			// 	var cityArray = [ "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
+			// 	var cityArray = [ "Sydney", "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
 
-			// 	var textGeo = new THREE.TextGeometry ( cityArray[0], {
-			// 		font: font,
-			// 		size: 2,
-			// 		height: 0.1,
-			// 		bevelEnabled: false
-			// 	});
-			// 	var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
-			// 	var mesh = new THREE.Mesh( textGeo, textMaterial );
-			// 	mesh.position.set( 21, -10, -20 );
-			// 	scene.add( mesh );
+			// 	// for (var i = 0; i < cityArray.length; i++) {
+			// 	// 	var textGeo = new THREE.TextGeometry ( cityArray[i], {
+			// 	// 	font: font,
+			// 	// 	size: 2,
+			// 	// 	height: 0.1,
+			// 	// 	bevelEnabled: false
+			// 	// 	});
+
+			// 	// 	var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
+			// 	// 	var mesh = new THREE.Mesh( textGeo, textMaterial );
+
+			// 	// 	runOneText(64, mesh); //Sydney
+			// 	// 	runOneText(98.9, mesh); //Madagascar
+			// 	// 	runOneText(54.4, mesh); //Santiago
+			// 	// 	runOneText(251.3, mesh); //New York
+			// 	// 	runOneText(230, mesh); //Los Angeles
+			// 	// 	runOneText(237.4, mesh);  //Tokyo
+			// 	// 	runOneText(268, mesh); //London
+			// 	// 	runOneText(267.5, mesh); //Berlin
+			// 	// 	runOneText(267.7, mesh); //Amsterdam
+
+			// 	// 	console.log(textGeo)
+			// 	// }
 			// });
-			
-			//Position the texts of city names depending on the position of circle marks
-			var runOneText = function(i, mesh){
-					
-					var l = count;
-					var phi = Math.acos( - 1 + ( 2 * i ) / l );
-					var theta = Math.sqrt( l * Math.PI ) * phi;
-					vector.setFromSphericalCoords( radius, phi, theta );
-					// geometry.copy( mesh );
-					// geometry.lookAt( vector );
-					// geometry.translate( vector.x, vector.y, vector.z );
-					color.setHSL( ( i / l ), 1.0, 0.7 );
-					mesh.position.set( vector.x, vector.y, vector.z );
-					mesh.rotation.z = Math.PI / 2;
-					scene.add( mesh );
-			}
-
-			var loader = new THREE.FontLoader();
-			loader.load( 'assets/gentilis_regular.typeface.json', function ( font ) {
-
-				var cityArray = [ "Sydney", "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
-
-				//FOR LOOP for repeating city Array
-				for (var i = 0; i < cityArray.length; i++) {
-					var textGeo = new THREE.TextGeometry ( cityArray[i], {
-					font: font,
-					size: 2,
-					height: 0.1,
-					bevelEnabled: false
-					});
-
-					var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
-					var mesh = new THREE.Mesh( textGeo, textMaterial );
-
-					runOneText(64, mesh); //Sydney
-					runOneText(98.9, mesh); //Madagascar
-					runOneText(54.4, mesh); //Santiago
-					runOneText(251.3, mesh); //New York
-					runOneText(230, mesh); //Los Angeles
-					runOneText(237.4, mesh);  //Tokyo
-					runOneText(268, mesh); //London
-					runOneText(267.5, mesh); //Berlin
-					runOneText(267.7, mesh); //Amsterdam
-
-					console.log(textGeo)
-				}
-
-				// var textGeo = new THREE.TextGeometry ( cityArray[0], {
-				// 	font: font,
-				// 	size: 2,
-				// 	height: 0.1,
-				// 	bevelEnabled: false
-				// });
-				// var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
-				// var mesh = new THREE.Mesh( textGeo, textMaterial );
-
-				// runOneText(64, mesh); //Sydney
-				// runOneText(98.9, mesh); //Madagascar
-				// runOneText(54.4, mesh); //Santiago
-				// runOneText(251.3, mesh); //New York
-				// runOneText(230, mesh); //Los Angeles
-				// runOneText(237.4, mesh);  //Tokyo
-				// runOneText(268, mesh); //London
-				// runOneText(267.5, mesh); //Berlin
-				// runOneText(267.7, mesh); //Amsterdam
-			});
 
 
 
