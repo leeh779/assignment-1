@@ -8,9 +8,9 @@
 	</head>
 	<body>
 		<script type="module">
-			import * as THREE from './assets/three.module.js';
-			import Stats from './assets/stats.module.js';
-			import { TrackballControls } from './assets/controls/TrackballControls.js';
+			import * as THREE from '/assets/three.module.js';
+			import Stats from '/assets/stats.module.js';
+			import { TrackballControls } from '/assets/controls/TrackballControls.js';
 			var camera, scene, renderer, controls, stats;
 			init();
 			animate();
@@ -56,7 +56,7 @@
 
 
 			function createGeometry() {
-				// option 2: convert heart geometry into circle and remove extrusion depth
+				// convert heart geometry into circle and remove extrusion depth
 				var sphereShape = new THREE.Shape();
 				var x = 0, y = 0;
 				sphereShape.ellipse ( 0, 0, x + 1, y + 1, 0, 270, false, 0 )
@@ -64,10 +64,6 @@
 				var extrudeSettings = {
 					depth: 1,
 					bevelEnabled: false,
-					// bevelSegments: 1,
-					// steps: 2,
-					// bevelSize: 1,
-					// bevelThickness: 1
 				};
 
 				var geometry = new THREE.ExtrudeGeometry( sphereShape, extrudeSettings );
@@ -75,6 +71,7 @@
 				geometry.scale( 0.3, 0.3, 0.3 );
 				return geometry;
 			}
+
 			function createScene() {
 				var bufferGeometry = new THREE.BufferGeometry();
 				var radius = 30;
@@ -97,39 +94,74 @@
 					geometry.copy( heartGeometry );
 					geometry.lookAt( vector );
 					geometry.translate( vector.x, vector.y, vector.z );
-					// color.setHSL( ( i / l ), 1.0, 0.7 );
-					// Sandstone: color.setHSL( 15, 17, 59 );
-					// color.setHSL( 14, .80, .66 );
+					color.setHSL( ( i / l ), 1.0, 0.7 );
 
-					//Color for localStorage
-					//RETRIEVE AND UPDATE VARIABLE:
-					if(localStorage.getItem('hslColor')){
-					// if we've saved the color use it
+					//Changes Color onClick
+					// function onDocumentMouseDown( event ) {
 
-						var hslColor = localStorage.getItem('hslColor');
-						// local storage saves strings, so any number or array we need to convert
-						hslColor = JSON.parse(hslColor); // convert string into readable array
-						color.setHSL(hslColor[0], hslColor[1], hslColor[2]);
+					// 	var mouse;
+					// 	// the following line would stop any other event handler from firing
+					// 	// (such as the mouse's TrackballControls)
+					// 	// event.preventDefault();
+						
+					// 	console.log("Click.");
+						
+					// 	// update the mouse variable
+					// 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+					// 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+						
+					// 	// find intersections
 
-					}else{// use the default
+					// 	// create a Ray with origin at the mouse position
+					// 	//   and direction into the scene (camera direction)
+					// 	var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+					// 	projector.unprojectVector( vector, camera );
+					// 	var ray = new THREE.Raycaster( camera.position, vector.sub( camera.position ).normalize() );
 
-						var hslColors = [0, 0, .89]; //gray color
-						color.setHSL(hslColors[0], hslColors[1], hslColors[2]);
-					}
+					// 	// create an array containing all objects in the scene with which the ray intersects
+					// 	var intersects = ray.intersectObjects( targetList );
+						
+					// 	// if there is one (or more) intersections
+					// 	if ( intersects.length > 0 )
+					// 	{
+					// 		console.log("Hit @ " + toString( intersects[0].point ) );
+					// 		// change the color of the closest face.
+					// 		// intersects[ 0 ].face.color.setHSL( ( i / l ), 1.0, 0.7 );
+					// 		intersects[ 0 ].face.color.setHSL( 15, .17, .59 ); 
+					// 		intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+					// 	}
+
+					// }
+
+					// //Color for localStorage
+					// //RETRIEVE AND UPDATE VARIABLE:
+					// if(localStorage.getItem('hslColor')){
+					// // if we've saved the color use it
+
+					// 	var hslColor = localStorage.getItem('hslColor');
+					// 	// local storage saves strings, so any number or array we need to convert
+					// 	hslColor = JSON.parse(hslColor); // convert string into readable array
+					// 	color.setHSL(hslColor[0], hslColor[1], hslColor[2]);
+
+					// }else{// use the default
+
+					// 	var hslColors = [0, 0, .89]; //gray color
+					// 	color.setHSL(hslColors[0], hslColors[1], hslColors[2]);
+					// }
 
 
 
-					// SAVE VARIABLE: (happen on click or based off of time, etc)
-					var newHslColor = [14, .80, .66];
-						// update the actual color that's being seen
+					// // SAVE VARIABLE: (happen on click or based off of time, etc)
+					// var newHslColor = [14, .80, .66];
+					// 	// update the actual color that's being seen
 
-						// update the local storage item:
-						// convert hsl array into string:
-					newHslColor = JSON.stringify(newHslColor); // "[1.5, 2.5, 3.5]"
-					// "this is a string"
+					// 	// update the local storage item:
+					// 	// convert hsl array into string:
+					// newHslColor = JSON.stringify(newHslColor); // "[1.5, 2.5, 3.5]"
+					// // "this is a string"
 
-					localStorage.setItem('hslColor', newHslColor);
-					//Color for localStorage END.
+					// localStorage.setItem('hslColor', newHslColor);
+					// //Color for localStorage END.
 
 
 					// console.log(geometry.faces[0])
@@ -169,8 +201,6 @@
 			}
 
 			runOneDot(64); //Sydney
-			// if (i = 64) { color.setHSL(0, 0, .75); }
-
 			runOneDot(98.9); //Madagascar
 			runOneDot(54.4); //Santiago
 			runOneDot(251.3); //New York
@@ -214,55 +244,56 @@
 					mesh.position.set( vector.x, vector.y, vector.z );
 					mesh.rotation.z = Math.PI / 2;
 					scene.add( mesh );
-
-					console.log(geometry)
-
-				// 	geometry.faces.forEach( function ( face ) {
-				// 		console.log(face)
-				// 		positions.push( geometry.vertices[ face.a ].x );
-				// 		positions.push( geometry.vertices[ face.a ].y );
-				// 		positions.push( geometry.vertices[ face.a ].z );
-				// 		positions.push( geometry.vertices[ face.b ].x );
-				// 		positions.push( geometry.vertices[ face.b ].y );
-				// 		positions.push( geometry.vertices[ face.b ].z );
-				// 		positions.push( geometry.vertices[ face.c ].x );
-				// 		positions.push( geometry.vertices[ face.c ].y );
-				// 		positions.push( geometry.vertices[ face.c ].z );
-				// 		normals.push( face.normal.x );
-				// 		normals.push( face.normal.y );
-				// 		normals.push( face.normal.z );
-				// 		normals.push( face.normal.x );
-				// 		normals.push( face.normal.y );
-				// 		normals.push( face.normal.z );
-				// 		normals.push( face.normal.x );
-				// 		normals.push( face.normal.y );
-				// 		normals.push( face.normal.z );
-				// 		colors.push( color.r );
-				// 		colors.push( color.g );
-				// 		colors.push( color.b );
-				// 		colors.push( color.r );
-				// 		colors.push( color.g );
-				// 		colors.push( color.b );
-				// 		colors.push( color.r );
-				// 		colors.push( color.g );
-				// 		colors.push( color.b );
-				// })
 			}
 
 			var loader = new THREE.FontLoader();
 			loader.load( 'assets/gentilis_regular.typeface.json', function ( font ) {
 
-				var cityArray = [ "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
+				var cityArray = [ "Sydney", "Madagascar", "Santiago", "New York", "Los Angeles", "Tokyo", "London", "Berlin", "Amsterdam"]
 
-				var textGeo = new THREE.TextGeometry ( cityArray[0], {
+				//FOR LOOP for repeating city Array
+				for (var i = 0; i < cityArray.length; i++) {
+					var textGeo = new THREE.TextGeometry ( cityArray[i], {
 					font: font,
 					size: 2,
 					height: 0.1,
 					bevelEnabled: false
-				});
-				var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
-				var mesh = new THREE.Mesh( textGeo, textMaterial );
-				runOneText(64, mesh); //Sydney
+					});
+
+					var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
+					var mesh = new THREE.Mesh( textGeo, textMaterial );
+
+					runOneText(64, mesh); //Sydney
+					runOneText(98.9, mesh); //Madagascar
+					runOneText(54.4, mesh); //Santiago
+					runOneText(251.3, mesh); //New York
+					runOneText(230, mesh); //Los Angeles
+					runOneText(237.4, mesh);  //Tokyo
+					runOneText(268, mesh); //London
+					runOneText(267.5, mesh); //Berlin
+					runOneText(267.7, mesh); //Amsterdam
+
+					console.log(textGeo)
+				}
+
+				// var textGeo = new THREE.TextGeometry ( cityArray[0], {
+				// 	font: font,
+				// 	size: 2,
+				// 	height: 0.1,
+				// 	bevelEnabled: false
+				// });
+				// var textMaterial = new THREE.MeshPhongMaterial( {color:0x332819} );
+				// var mesh = new THREE.Mesh( textGeo, textMaterial );
+
+				// runOneText(64, mesh); //Sydney
+				// runOneText(98.9, mesh); //Madagascar
+				// runOneText(54.4, mesh); //Santiago
+				// runOneText(251.3, mesh); //New York
+				// runOneText(230, mesh); //Los Angeles
+				// runOneText(237.4, mesh);  //Tokyo
+				// runOneText(268, mesh); //London
+				// runOneText(267.5, mesh); //Berlin
+				// runOneText(267.7, mesh); //Amsterdam
 			});
 
 
